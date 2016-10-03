@@ -1,0 +1,164 @@
+<?php
+    /**
+    * @backupGlobals disabled
+    * @backupStaticAttributes disabled
+    */
+
+    require_once __DIR__."/../inc/ConnectionTest.php";
+    require_once __DIR__."/../src/Rider.php";
+    require_once __DIR__."/../src/Service.php";
+
+    class RiderTest extends PHPUnit_Framework_TestCase
+    {
+        protected function tearDown()
+        {
+            Rider::deleteAll();
+            Service::deleteAll();
+        }
+        function test_getRiderName()
+        {
+            //Arrange
+            $name = "Tom Hanks";
+            $id = 1;
+            $test_rider = new Rider($name, $id);
+
+            //Act
+            $result = $test_rider->getName();
+
+            //Assert
+            $this->assertEquals($name, $result);
+        }
+
+        function test_getRiderId()
+        {
+            //Arrange
+            $name = "Tom Hanks";
+            $id = 1;
+            $test_rider = new Rider($name, $id);
+
+            //Act
+            $result = $test_rider->getId();
+
+            //Assert
+            $this->assertEquals($id, $result);
+        }
+
+        function test_save()
+        {
+          //Arrange
+          $name = "Tom Hanks";
+          $test_rider = new Rider($name);
+          //Act
+          $test_rider->save();
+          $result = Rider::getAll();
+          //Assert
+          $this->assertEquals([$test_rider], $result);
+        }
+
+        function test_getAll()
+        {
+          //Arrange
+          $name = "Tom Hanks";
+          $test_rider = new Rider($name);
+          $test_rider->save();
+
+          $name2 = "Meg Ryan";
+          $test_rider2 = new Rider($name2);
+          $test_rider2->save();
+
+          //Act
+          $result = Rider::getAll();
+
+          //Assert
+          $this->assertEquals([$test_rider, $test_rider2], $result);
+        }
+
+        function test_deleteAll()
+        {
+          //Arrange
+          $name = "Tom Hanks";
+          $test_rider = new Rider($name);
+          $test_rider->save();
+
+          $name2 = "Meg Ryan";
+          $test_rider2 = new Rider($name2);
+          $test_rider2->save();
+
+          //Act
+          Rider::deleteAll();
+          $result = Rider::getAll();
+
+
+          //Assert
+          $this->assertEquals([], $result);
+        }
+
+        function test_riderFind()
+        {
+            //Arrange
+            $name = "Tom Hanks";
+            $test_rider = new Rider($name);
+            $test_rider->save();
+
+            $name2 = "Meg Ryan";
+            $test_rider2 = new Rider($name2);
+            $test_rider2->save();
+
+            //Act
+            $id = $test_rider->getId();
+            $result = Rider::find($id);
+
+            //Assert
+            $this->assertEquals($test_rider, $result);
+        }
+
+        function test_addService()
+        {
+            //Arrange
+            $name = "Tom Hanks";
+            $test_rider = new Rider($name);
+            $test_rider->save();
+
+            $name = "Moving help";
+            $description = "We send a capable pair of hands your way to do some packing and lugging!";
+            $type_id = 1;
+            $test_service = new Service($name, $description, $type_id);
+            $test_service->save();
+
+            //Act
+            $test_rider->addService($test_service);
+            $result = $test_rider->getServices();
+
+            //Assert
+            $this->assertEquals([$test_service], $result);
+        }
+
+        function test_getServices()
+        {
+            //Arrange
+            $name = "Tom Hanks";
+            $test_rider = new Rider($name);
+            $test_rider->save();
+
+            $name = "Moving help";
+            $description = "We send a capable pair of hands your way to do some packing and lugging!";
+            $type_id = 1;
+            $test_service = new Service($name, $description, $type_id);
+            $test_service->save();
+
+            $name2 = "Math Tutoring";
+            $description2 = "test test";
+            $type_id2 = 2;
+            $test_service2 = new Service($name2, $description2, $type_id2);
+            $test_service2->save();
+
+            //Act
+            $test_rider->addService($test_service);
+            $test_rider->addService($test_service2);
+            $result = $test_rider->getServices();
+
+            //Assert
+            $this->assertEquals([$test_service, $test_service2], $result);
+        }
+    }
+?>
