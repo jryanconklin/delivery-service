@@ -11,7 +11,9 @@ CREATE TABLE clients (
     city VARCHAR(100),
     state VARCHAR(10),
     zip int,
-    country VARCHAR(100)
+    country VARCHAR(100),
+    phone VARCHAR(100),
+    email VARCHAR(100)
 );
 
 CREATE TABLE vendors (
@@ -23,7 +25,8 @@ CREATE TABLE vendors (
     city VARCHAR(100),
     state VARCHAR(10),
     zip int,
-    country VARCHAR(100)
+    country VARCHAR(100),
+    phone VARCHAR(100)
 );
 
 CREATE TABLE orders (
@@ -38,7 +41,8 @@ CREATE TABLE orders (
 
 CREATE TABLE riders (
     id serial PRIMARY KEY,
-    name VARCHAR(70)
+    name VARCHAR(70),
+    available BOOL
 );
 
 CREATE TABLE services (
@@ -58,3 +62,5 @@ CREATE TABLE types (
     id serial PRIMARY KEY,
     name VARCHAR(100)
 );
+
+INSERT INTO types
