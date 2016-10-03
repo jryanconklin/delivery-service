@@ -53,7 +53,11 @@
 
         function save()
         {
-          $GLOBALS['DB']->exec("INSERT INTO services (name, description, type_id) VALUES ('{$this->getName()}', '{$this->getDescription()}', {$this->getTypeId()});");
+          $GLOBALS['DB']->exec(
+          "INSERT INTO services (name, description, type_id)
+
+          VALUES ('{$this->getName()}', '{$this->getDescription()}', {$this->getTypeId()});");
+
           $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
