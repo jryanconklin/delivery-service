@@ -132,5 +132,33 @@
             //Assert
             $this->assertEquals([$test_service], $result);
         }
+
+        function test_getServices()
+        {
+            //Arrange
+            $name = "Tom Hanks";
+            $test_rider = new Rider($name);
+            $test_rider->save();
+
+            $name = "Moving help";
+            $description = "We send a capable pair of hands your way to do some packing and lugging!";
+            $type_id = 1;
+            $test_service = new Service($name, $description, $type_id);
+            $test_service->save();
+
+            $name2 = "Math Tutoring";
+            $description2 = "test test";
+            $type_id2 = 2;
+            $test_service2 = new Service($name2, $description2, $type_id2);
+            $test_service2->save();
+
+            //Act
+            $test_rider->addService($test_service);
+            $test_rider->addService($test_service2);
+            $result = $test_rider->getServices();
+
+            //Assert
+            $this->assertEquals([$test_service, $test_service2], $result)
+        }
     }
 ?>
