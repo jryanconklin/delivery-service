@@ -42,7 +42,7 @@
 
             //Act
             $new_name = "Heavy lifting";
-            $test_rider->setName($new_name);
+            $test_service->setName($new_name);
             $result = $test_service->getName();
 
             //Assert
