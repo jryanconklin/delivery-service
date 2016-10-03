@@ -6,6 +6,7 @@
 
     require_once __DIR__."/../inc/ConnectionTest.php";
     require_once __DIR__."/../src/Rider.php";
+    require_once __DIR__."/../src/Service.php";
 
     class RiderTest extends PHPUnit_Framework_TestCase
     {
@@ -109,6 +110,26 @@
 
             //Assert
             $this->assertEquals($test_rider, $result);
+        }
+
+        function test_addService()
+        {
+            //Arrange
+            $name = "Tom Hanks";
+            $test_rider = new Rider($name);
+            $test_rider->save();
+
+            $name = "Moving help";
+            $description = "We'll send a capable pair of hands your way to do some packing and lugging!";
+            $type_id = 1;
+            $test_service = new Service($name, $description, $type_id);
+
+            //Act
+            $test_rider->addService($test_service);
+            $result = $test_rider->getServices();
+
+            //Assert
+            $this->assertEquals([$test_service], $result);
         }
     }
 ?>
