@@ -77,42 +77,42 @@
         //Setters
         function setName($new_name)
         {
-
+            $this->name = (string) $new_name;
         }
 
         function setTypeId($new_typeId)
         {
-
+            $this->typeId = (integer) $new_typeId;
         }
 
         function setAddressOne($new_address_one)
         {
-
+            $this->addressOne = (string) $new_address_one;
         }
 
         function setAddressTwo($new_address_two)
         {
-
+            $this->addressTwo = (string) $new_address_two;
         }
 
         function setCity($new_city)
         {
-
+            $this->city = (string) $new_city;
         }
 
         function setState($new_state)
         {
-
+            $this->state = (string) $new_state;
         }
 
         function setZip($new_zip)
         {
-
+            $this->zip = (integer) $new_zip;
         }
 
         function setCountry($new_country)
         {
-
+            $this->country = (string) $new_country;
         }
 
 //Regular Methods
