@@ -131,7 +131,7 @@
             $result = Service::find($id);
 
             //Assert
-            $this->assertEquals($test_rider, $result);
+            $this->assertEquals($test_service, $result);
         }
     }
 ?>
