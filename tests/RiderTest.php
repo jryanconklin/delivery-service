@@ -72,7 +72,7 @@
           $this->assertEquals([$test_rider, $test_rider2], $result);
         }
 
-        function test_getAll()
+        function test_deleteAll()
         {
           //Arrange
           $name = "Tom Hanks";
@@ -84,10 +84,31 @@
           $test_rider2->save();
 
           //Act
-          $result = Rider::deleteAll();
+          Rider::deleteAll();
+          $result = Rider::getAll();
+
 
           //Assert
           $this->assertEquals([], $result);
+        }
+
+        function test_riderFind()
+        {
+            //Arrange
+            $name = "Tom Hanks";
+            $test_rider = new Rider($name);
+            $test_rider->save();
+
+            $name2 = "Meg Ryan";
+            $test_rider2 = new Rider($name2);
+            $test_rider2->save();
+
+            //Act
+            $id = $test_rider->getId();
+            $restul = Rider::find($id);
+
+            //Assert
+            $this->assertEquals($test_rider, $result);
         }
     }
 ?>
