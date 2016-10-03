@@ -2,8 +2,8 @@
 
     class Rider
     {
-        private $name
-        private $id
+        private $name;
+        private $id;
 
         function __construct($name, $id=null)
         {
@@ -29,7 +29,7 @@
             return $this->id;
         }
 //Regular Methods
-        
+
 
 
 
