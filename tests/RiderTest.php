@@ -46,12 +46,30 @@
         {
           //Arrange
           $name = "Tom Hanks";
-          $test_rider = new Rider($name, $id);
+          $test_rider = new Rider($name);
           //Act
           $test_rider->save();
           $result = Rider::getAll();
           //Assert
           $this->assertEquals([$test_rider], $result);
+        }
+
+        function test_getAll()
+        {
+          //Arrange
+          $name = "Tom Hanks";
+          $test_rider = new Rider($name);
+          $test_rider->save();
+
+          $name2 = "Meg Ryan";
+          $test_rider2 = new Rider($name2);
+          $test_rider2->save();
+
+          //Act
+          $result = Rider::getAll();
+
+          //Assert
+          $this->assertEquals([$test_rider, $test_rider2], $result);
         }
     }
 ?>
