@@ -28,21 +28,27 @@
         {
             return $this->id;
         }
-        
+
 //Regular Methods
-
-
-
-
-
-
+        function save()
+        {
+          $GLOBALS['DB']->exec("INSERT INTO riders (name) VALUES ('{$this->getName()}');");
+          $this->id = $GLOBALS['DB']->lastInsertId();
+        }
 
 //Static Methods
-
-
-
-
-
+        static function getAll()
+        {
+            $returned_riders = $GLOBALS['DB']->query("SELECT * FROM riders;");
+            $riders = array();
+            foreach($returned_riders as $rider) {
+                $name = $rider['name'];
+                $id = $rider['id'];
+                $new_rider = new Rider($name, $id);
+                array_push($riders, $new_rider);
+            }
+            return $riders;
+        }
 
 //End Class
     }
