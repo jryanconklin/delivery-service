@@ -22,14 +22,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $result = $vendor1->getId();
@@ -43,14 +43,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $result = $vendor1->getName();
@@ -64,20 +64,20 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $result = $vendor1->getTypeId();
 
             //Assert
-            $this->assertEquals($typeId, $result);
+            $this->assertEquals($type_id, $result);
         }
 
         function test_getAddressOne()
@@ -85,20 +85,20 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $result = $vendor1->getAddressOne();
 
             //Assert
-            $this->assertEquals($addressOne, $result);
+            $this->assertEquals($address_one, $result);
         }
 
         function test_getAddressTwo()
@@ -106,20 +106,20 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $result = $vendor1->getAddressTwo();
 
             //Assert
-            $this->assertEquals($addressTwo, $result);
+            $this->assertEquals($address_two, $result);
         }
 
         function test_getCity()
@@ -127,14 +127,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $result = $vendor1->getCity();
@@ -148,14 +148,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $result = $vendor1->getState();
@@ -169,14 +169,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $result = $vendor1->getZip();
@@ -190,14 +190,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $result = $vendor1->getCountry();
@@ -211,14 +211,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $new_name = "GG Portland";
@@ -234,22 +234,22 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
-            $new_typeId = 5;
-            $vendor1->setTypeId($new_typeId);
+            $new_type_id = 5;
+            $vendor1->setTypeId($new_type_id);
             $result = $vendor1->getTypeId();
 
             //Assert
-            $this->assertEquals($new_typeId, $result);
+            $this->assertEquals($new_type_id, $result);
         }
 
         function test_setAddressOne()
@@ -257,14 +257,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $new_address_one = "New Place Ave";
@@ -280,14 +280,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $new_address_two = "New Place Ave";
@@ -303,14 +303,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $new_city = "New City";
@@ -326,14 +326,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = "97214";
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $new_state = "WA";
@@ -349,14 +349,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = 97214;
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $new_zip = 98773;
@@ -372,14 +372,14 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
-            $typeId = 2;
-            $addressOne = "345 SE Taylor St";
-            $addressTwo = "";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
             $city = "Portland";
             $state = "OR";
             $zip = 97214;
             $country = "United States";
-            $vendor1 = new Vendor($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id);
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
             //Act
             $new_country = "Canada";
@@ -390,6 +390,27 @@
             $this->assertEquals($new_country, $result);
         }
 
+        function test_save()
+        {
+            //Arrange
+            $id = null;
+            $name = "Guardian Games";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
+            $city = "Portland";
+            $state = "OR";
+            $zip = 97214;
+            $country = "United States";
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+
+            //Act
+            $vendor1->save();
+            $result = Vendor::getAll();
+
+            //Assert
+            $this->assertEquals([$vendor1], $result);
+        }
 
 
 
