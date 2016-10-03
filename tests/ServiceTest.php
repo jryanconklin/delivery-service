@@ -13,7 +13,7 @@
     {
         protected function tearDown()
         {
-            // Service::deleteAll();
+            Service::deleteAll();
             // Rider::deleteAll();
         }
         function test_getServiceName()
@@ -60,7 +60,6 @@
           $test_service->save();
 
           //Act
-          $test_service->save();
           $result = Service::getAll();
           //Assert
           $this->assertEquals([$test_service], $result);
@@ -87,6 +86,7 @@
           //Assert
           $this->assertEquals([$test_service, $test_service2], $result);
         }
+
     //
     //     function test_deleteAll()
     //     {
