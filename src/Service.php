@@ -80,7 +80,7 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM services;");
         }
-//
+
 //         static function find($search_id)
 //         {
 //             $found_rider = null;
