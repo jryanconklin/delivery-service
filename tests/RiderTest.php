@@ -105,7 +105,7 @@
 
             //Act
             $id = $test_rider->getId();
-            $restul = Rider::find($id);
+            $result = Rider::find($id);
 
             //Assert
             $this->assertEquals($test_rider, $result);

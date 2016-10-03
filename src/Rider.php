@@ -55,7 +55,19 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM riders;");
         }
-        
+
+        static function find($search_id)
+        {
+            $found_rider = null;
+            $riders = Rider::getAll();
+            foreach($riders as $rider){
+                $rider_id = $rider->getId();
+                if($rider_id == $search_id) {
+                  $found_rider = $rider;
+                }
+            }
+            return $found_rider;
+        }
 //End Class
     }
 ?>
