@@ -39,39 +39,39 @@
             return $this->name;
         }
 
-        function getType()
+        function getTypeId()
         {
-
+            return $this->typeId;
         }
 
         function getAddressOne()
         {
-
+            return $this->addressOne;
         }
 
         function getAddressTwo()
         {
-
+            return $this->addressTwo;
         }
 
         function getCity()
         {
-
+            return $this->city;
         }
 
         function getState()
         {
-
+            return $this->state;
         }
 
         function getZip()
         {
-
+            return $this->zip;
         }
 
         function getCountry()
         {
-
+            return $this->country;
         }
 
         //Setters
@@ -80,7 +80,7 @@
 
         }
 
-        function setType($new_typeId)
+        function setTypeId($new_typeId)
         {
 
         }
