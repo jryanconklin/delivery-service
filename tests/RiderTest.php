@@ -158,7 +158,7 @@
             $result = $test_rider->getServices();
 
             //Assert
-            $this->assertEquals([$test_service, $test_service2], $result)
+            $this->assertEquals([$test_service, $test_service2], $result);
         }
     }
 ?>
