@@ -12,7 +12,7 @@
     {
         protected function tearDown()
         {
-            Service::deleteAll();
+            // Service::deleteAll();
             // Rider::deleteAll();
         }
         function test_getServiceName()
@@ -113,5 +113,5 @@
     //         //Assert
     //         $this->assertEquals($test_rider, $result);
     //     }
-    // }
+    }
 ?>
