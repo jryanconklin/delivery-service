@@ -6,21 +6,21 @@
         private $id;
         private $name;
         private $type;
-        private $address1;
-        private $address2;
+        private $addressOne;
+        private $addressTwo;
         private $city;
         private $state;
         private $zip;
         private $country;
 
 //Constructor
-        function __construct($name, $type, $address1, $address2, $city, $state, $zip, $country, $id = null)
+        function __construct($name, $type, $addressOne, $addressTwo, $city, $state, $zip, $country, $id = null)
         {
             $this->id = $id;
             $this->name = $name;
             $this->type = $type;
-            $this->address1 = $address1;
-            $this->address2 = $address2;
+            $this->addressOne = $addressOne;
+            $this->addressTwo = $addressTwo;
             $this->city = $city;
             $this->state = $state;
             $this->zip = $zip;
@@ -28,23 +28,126 @@
         }
 
 //Getter and Setter Methods
+        //Getters
+        function getId()
+        {
 
+        }
 
+        function getName()
+        {
 
+        }
+
+        function getType()
+        {
+
+        }
+
+        function getAddressOne()
+        {
+
+        }
+
+        function getAddressTwo()
+        {
+
+        }
+
+        function getCity()
+        {
+
+        }
+
+        function getState()
+        {
+
+        }
+
+        function getZip()
+        {
+
+        }
+
+        function getCountry()
+        {
+
+        }
+
+        //Setters
+        function setName($new_name)
+        {
+
+        }
+
+        function setType($new_type)
+        {
+
+        }
+
+        function setAddressOne($new_address_one)
+        {
+
+        }
+
+        function setAddressTwo($new_address_two)
+        {
+
+        }
+
+        function setCity($new_city)
+        {
+
+        }
+
+        function setState($new_state)
+        {
+
+        }
+
+        function setZip($new_zip)
+        {
+
+        }
+
+        function setCountry($new_country)
+        {
+
+        }
 
 //Regular Methods
+        function save()
+        {
 
+        }
 
+        function update($new_name, $new_type, $new_address_one, $new_address_two, $new_city, $new_state, $new_zip, $new_country)
+        {
 
+        }
 
+        function delete()
+        {
+
+        }
 
 
 
 //Static Methods
+        static function getAll()
+        {
 
+        }
 
+        static function deleteAll()
+        {
 
+        }
 
+        static function findById()
+        {
+
+        }
 
 
 //End Class
