@@ -106,28 +106,32 @@
           //Act
           Service::deleteAll();
           $result = Service::getAll();
-    
+
           //Assert
           $this->assertEquals([], $result);
         }
 
-    //     function test_riderFind()
-    //     {
-    //         //Arrange
-    //         $name = "Tom Hanks";
-    //         $test_rider = new Service($name);
-    //         $test_rider->save();
-    //
-    //         $name2 = "Meg Ryan";
-    //         $test_rider2 = new Service($name2);
-    //         $test_rider2->save();
-    //
-    //         //Act
-    //         $id = $test_rider->getId();
-    //         $result = Service::find($id);
-    //
-    //         //Assert
-    //         $this->assertEquals($test_rider, $result);
-    //     }
+        function test_serviceFind()
+        {
+            //Arrange
+            $name = "Moving help";
+            $description = "test test";
+            $type_id = 1;
+            $test_service = new Service($name, $description, $type_id);
+            $test_service->save();
+
+            $name2 = "Math Tutoring";
+            $description2 = "test test";
+            $type_id2 = 2;
+            $test_service2 = new Service($name2, $description2, $type_id2);
+            $test_service2->save();
+
+            //Act
+            $id = $test_service->getId();
+            $result = Service::find($id);
+
+            //Assert
+            $this->assertEquals($test_rider, $result);
+        }
     }
 ?>
