@@ -5,7 +5,7 @@
 //Properties
         private $id;
         private $name;
-        private $type;
+        private $typeId;
         private $addressOne;
         private $addressTwo;
         private $city;
@@ -14,11 +14,11 @@
         private $country;
 
 //Constructor
-        function __construct($name, $type, $addressOne, $addressTwo, $city, $state, $zip, $country, $id = null)
+        function __construct($name, $typeId, $addressOne, $addressTwo, $city, $state, $zip, $country, $id = null)
         {
             $this->id = $id;
             $this->name = $name;
-            $this->type = $type;
+            $this->typeId = $typeId;
             $this->addressOne = $addressOne;
             $this->addressTwo = $addressTwo;
             $this->city = $city;
@@ -31,12 +31,12 @@
         //Getters
         function getId()
         {
-
+            return $this->id;
         }
 
         function getName()
         {
-
+            return $this->name;
         }
 
         function getType()
@@ -80,7 +80,7 @@
 
         }
 
-        function setType($new_type)
+        function setType($new_typeId)
         {
 
         }
