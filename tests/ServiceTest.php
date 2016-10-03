@@ -134,10 +134,56 @@
             $this->assertEquals($test_service, $result);
         }
 
-        // function test_addService()
-        // {
-        //     //Arrange
-        //
-        // }
+        function test_addRider()
+        {
+            //Arrange
+            $name = "Moving help";
+            $description = "We send a capable pair of hands your way to do some packing and lugging!";
+            $type_id = 1;
+            $test_service = new Service($name, $description, $type_id);
+            $test_service->save();
+
+            $name = "Tom Hanks";
+            $test_rider = new Rider($name);
+            $test_rider->save();
+
+            $name2 = "Meg Ryan";
+            $test_rider2 = new Rider($name2);
+            $test_rider2->save();
+
+
+            //Act
+            $test_service->addRider($test_rider);
+            $result = $test_service->getRiders();
+
+            //Assert
+            $this->assertEquals([$test_rider], $result);
+        }
+
+        function test_getRiders()
+        {
+            //Arrange
+            $name = "Moving help";
+            $description = "We send a capable pair of hands your way to do some packing and lugging!";
+            $type_id = 1;
+            $test_service = new Service($name, $description, $type_id);
+            $test_service->save();
+
+            $name = "Tom Hanks";
+            $test_rider = new Rider($name);
+            $test_rider->save();
+
+            $name2 = "Meg Ryan";
+            $test_rider2 = new Rider($name2);
+            $test_rider2->save();
+
+            //Act
+            $test_service->addRider($test_rider);
+            $test_service->addRider($test_rider2);
+            $result = $test_service->getRiders();
+
+            //Assert
+            $this->assertEquals([$test_rider, $test_rider2], $result);
+        }
     }
 ?>

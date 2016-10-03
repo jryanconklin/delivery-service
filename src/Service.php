@@ -61,6 +61,27 @@
           $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function addRider($new_rider)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO riders_services (service_id, rider_id) VALUES ({$this->getId()}, {$new_rider->getId()});");
+        }
+
+        function getRiders()
+        {
+            $returned_riders = $GLOBALS['DB']->query("SELECT riders.* FROM services
+                JOIN riders_services ON (riders_services.service_id = services.id)
+                JOIN riders ON (riders.id = riders_services.rider_id)
+                WHERE services.id = {$this->getId()};");
+            $riders = array();
+            foreach($returned_riders as $rider) {
+                $name = $rider['name'];
+                $id = $rider['id'];
+                $new_rider = new Rider($name, $id);
+                array_push($riders, $new_rider);
+            }
+            return $riders;
+        }
+
 //Static Methods
         static function getAll()
         {
