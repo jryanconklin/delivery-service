@@ -17,7 +17,7 @@ CREATE TABLE clients (
 CREATE TABLE vendors (
     id serial PRIMARY KEY,
     name VARCHAR(70),
-    type VARCHAR(100),
+    type_id int,
     address_one VARCHAR(100),
     address_two VARCHAR(100),
     city VARCHAR(100),
@@ -45,11 +45,16 @@ CREATE TABLE services (
     id serial PRIMARY KEY,
     name VARCHAR(70),
     description VARCHAR(255),
-    type VARCHAR(100)
+    type_id int
 );
 
 CREATE TABLE riders_services (
     id serial PRIMARY KEY,
     rider_id int,
     service_id int
+);
+
+CREATE TABLE types (
+    id serial PRIMARY KEY,
+    name VARCHAR(100)
 );
