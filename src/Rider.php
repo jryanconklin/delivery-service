@@ -49,6 +49,7 @@
             }
             return $riders;
         }
+        
 //End Class
     }
 ?>
