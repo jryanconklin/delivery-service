@@ -31,28 +31,32 @@
             $this->assertEquals($name, $result);
         }
 
-    //     function test_getRiderId()
-    //     {
-    //         //Arrange
-    //         $name = "Tom Hanks";
-    //         $id = 1;
-    //         $test_rider = new Rider($name, $id);
-    //
-    //         //Act
-    //         $result = $test_rider->getId();
-    //
-    //         //Assert
-    //         $this->assertEquals($id, $result);
-    //     }
+        function test_setServiceName()
+        {
+            //Arrange
+            $name = "Moving help";
+            $description = "We'll send a capable pair of hands your way to do some packing and lugging!";
+            $type_id = 1;
+            $id = 1;
+            $test_service = new Service($name, $description, $type_id, $id);
+
+            //Act
+            $new_name = "Heavy lifting";
+            $test_rider->setName($new_name);
+            $result = $test_service->getName();
+
+            //Assert
+            $this->assertEquals($new_name, $result);
+        }
     //
     //     function test_save()
     //     {
     //       //Arrange
     //       $name = "Tom Hanks";
-    //       $test_rider = new Rider($name);
+    //       $test_rider = new Service($name);
     //       //Act
     //       $test_rider->save();
-    //       $result = Rider::getAll();
+    //       $result = Service::getAll();
     //       //Assert
     //       $this->assertEquals([$test_rider], $result);
     //     }
@@ -61,15 +65,15 @@
     //     {
     //       //Arrange
     //       $name = "Tom Hanks";
-    //       $test_rider = new Rider($name);
+    //       $test_rider = new Service($name);
     //       $test_rider->save();
     //
     //       $name2 = "Meg Ryan";
-    //       $test_rider2 = new Rider($name2);
+    //       $test_rider2 = new Service($name2);
     //       $test_rider2->save();
     //
     //       //Act
-    //       $result = Rider::getAll();
+    //       $result = Service::getAll();
     //
     //       //Assert
     //       $this->assertEquals([$test_rider, $test_rider2], $result);
@@ -79,16 +83,16 @@
     //     {
     //       //Arrange
     //       $name = "Tom Hanks";
-    //       $test_rider = new Rider($name);
+    //       $test_rider = new Service($name);
     //       $test_rider->save();
     //
     //       $name2 = "Meg Ryan";
-    //       $test_rider2 = new Rider($name2);
+    //       $test_rider2 = new Service($name2);
     //       $test_rider2->save();
     //
     //       //Act
-    //       Rider::deleteAll();
-    //       $result = Rider::getAll();
+    //       Service::deleteAll();
+    //       $result = Service::getAll();
     //
     //
     //       //Assert
@@ -99,16 +103,16 @@
     //     {
     //         //Arrange
     //         $name = "Tom Hanks";
-    //         $test_rider = new Rider($name);
+    //         $test_rider = new Service($name);
     //         $test_rider->save();
     //
     //         $name2 = "Meg Ryan";
-    //         $test_rider2 = new Rider($name2);
+    //         $test_rider2 = new Service($name2);
     //         $test_rider2->save();
     //
     //         //Act
     //         $id = $test_rider->getId();
-    //         $result = Rider::find($id);
+    //         $result = Service::find($id);
     //
     //         //Assert
     //         $this->assertEquals($test_rider, $result);
