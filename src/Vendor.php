@@ -140,7 +140,7 @@
 
         function delete()
         {
-
+            $GLOBALS['DB']->exec("DELETE FROM vendors WHERE id = {$this->getId()};");
         }
 
 
@@ -174,9 +174,22 @@
             $GLOBALS['DB']->exec("DELETE FROM vendors;");
         }
 
-        static function findById()
+        static function findById($search_id)
         {
-
+            $vendors = $GLOBALS['DB']->query("SELECT * FROM vendors WHERE id = {$search_id};");
+            foreach ($vendors as $vendor) {
+                $id = $vendor['id'];
+                $name = $vendor['name'];
+                $type_id = $vendor['type_id'];
+                $address_one = $vendor['address_one'];
+                $address_two = $vendor['address_two'];
+                $city = $vendor['city'];
+                $state = $vendor['state'];
+                $zip = $vendor['zip'];
+                $country = $vendor['country'];
+                $found_vendor = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+                return $found_vendor;
+            }
         }
 
 

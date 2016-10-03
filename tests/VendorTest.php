@@ -412,6 +412,123 @@
             $this->assertEquals([$vendor1], $result);
         }
 
+        function test_getAll()
+        {
+            //Arrange
+            $id = null;
+            $name = "Guardian Games";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
+            $city = "Portland";
+            $state = "OR";
+            $zip = 97214;
+            $country = "United States";
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $vendor1->save();
+
+            $id2 = null;
+            $name2 = "Portland Game Store";
+            $type_id2 = 2;
+            $address_one2 = "345 N Killingsworth St";
+            $address_two2 = "";
+            $city2 = "Portland";
+            $state2 = "OR";
+            $zip2 = 97217;
+            $country2 = "United States";
+            $vendor2 = new Vendor($name2, $type_id2, $address_one2, $address_two2, $city2, $state2, $zip2, $country2, $id2);
+            $vendor2->save();
+
+            //Act
+            $result = Vendor::getAll();
+
+            //Assert
+            $this->assertEquals([$vendor1, $vendor2], $result);
+        }
+
+        function test_delete()
+        {
+            //Arrange
+            $id = null;
+            $name = "Guardian Games";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
+            $city = "Portland";
+            $state = "OR";
+            $zip = 97214;
+            $country = "United States";
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $vendor1->save();
+
+            $id2 = null;
+            $name2 = "Portland Game Store";
+            $type_id2 = 2;
+            $address_one2 = "345 N Killingsworth St";
+            $address_two2 = "";
+            $city2 = "Portland";
+            $state2 = "OR";
+            $zip2 = 97217;
+            $country2 = "United States";
+            $vendor2 = new Vendor($name2, $type_id2, $address_one2, $address_two2, $city2, $state2, $zip2, $country2, $id2);
+            $vendor2->save();
+
+            //Act
+            $vendor1->delete();
+            $result = Vendor::getAll();
+
+            //Assert
+            $this->assertEquals([$vendor2], $result);
+        }
+
+        function test_findById()
+        {
+            //Arrange
+            $id = null;
+            $name = "Guardian Games";
+            $type_id = 2;
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
+            $city = "Portland";
+            $state = "OR";
+            $zip = 97214;
+            $country = "United States";
+            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $vendor1->save();
+
+            $id2 = null;
+            $name2 = "Portland Game Store";
+            $type_id2 = 2;
+            $address_one2 = "345 N Killingsworth St";
+            $address_two2 = "";
+            $city2 = "Portland";
+            $state2 = "OR";
+            $zip2 = 97217;
+            $country2 = "United States";
+            $vendor2 = new Vendor($name2, $type_id2, $address_one2, $address_two2, $city2, $state2, $zip2, $country2, $id2);
+            $vendor2->save();
+
+            //Act
+            $search_id = $vendor2->getId();
+            $result = Vendor::findById($search_id);
+
+            //Assert
+            $this->assertEquals($vendor2, $result);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //End Test
