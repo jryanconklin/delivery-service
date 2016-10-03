@@ -55,6 +55,7 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM riders;");
         }
+        
 //End Class
     }
 ?>
