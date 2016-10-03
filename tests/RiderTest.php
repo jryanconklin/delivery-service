@@ -11,7 +11,7 @@
     {
         protected function tearDown()
         {
-            // Rider::deleteAll();
+            Rider::deleteAll();
             // ::deleteAll();
         }
         function test_getRiderName()
@@ -70,6 +70,24 @@
 
           //Assert
           $this->assertEquals([$test_rider, $test_rider2], $result);
+        }
+
+        function test_getAll()
+        {
+          //Arrange
+          $name = "Tom Hanks";
+          $test_rider = new Rider($name);
+          $test_rider->save();
+
+          $name2 = "Meg Ryan";
+          $test_rider2 = new Rider($name2);
+          $test_rider2->save();
+
+          //Act
+          $result = Rider::deleteAll();
+
+          //Assert
+          $this->assertEquals([], $result);
         }
     }
 ?>

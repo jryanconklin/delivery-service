@@ -49,7 +49,12 @@
             }
             return $riders;
         }
-        
+
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM riders;");
+        }
 //End Class
     }
 ?>
