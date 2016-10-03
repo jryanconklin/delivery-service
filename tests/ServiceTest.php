@@ -48,19 +48,19 @@
             //Assert
             $this->assertEquals($new_name, $result);
         }
-    //
-    //     function test_save()
-    //     {
-    //       //Arrange
-    //       $name = "Tom Hanks";
-    //       $test_rider = new Service($name);
-    //       //Act
-    //       $test_rider->save();
-    //       $result = Service::getAll();
-    //       //Assert
-    //       $this->assertEquals([$test_rider], $result);
-    //     }
-    //
+
+        function test_save()
+        {
+          //Arrange
+          $name = "Tom Hanks";
+          $test_rider = new Service($name);
+          //Act
+          $test_rider->save();
+          $result = Service::getAll();
+          //Assert
+          $this->assertEquals([$test_rider], $result);
+        }
+    
     //     function test_getAll()
     //     {
     //       //Arrange

@@ -24,55 +24,57 @@
             return $this->name;
         }
 
-//         function setDescription($new_description)
-//         {
-//             $this->description = (string) $new_description;
-//         }
-//         function getDescription()
-//         {
-//             return $this->description;
-//         }
-//
-//         function setTypeId($new_type_id)
-//         {
-//             $this->type_id = (string) $new_type_id;
-//         }
-//         function getTypeId()
-//         {
-//             return $this->type_id;
-//         }
-//
-//         function setId($new_id)
-//         {
-//             $this->id = (string) $new_id;
-//         }
-//         function getId()
-//         {
-//             return $this->id;
-//         }
-//
-// //Regular Methods
-//         function save()
-//         {
-//           $GLOBALS['DB']->exec("INSERT INTO riders (name) VALUES ('{$this->getName()}');");
-//           $this->id = $GLOBALS['DB']->lastInsertId();
-//         }
-//
-// //Static Methods
-//         static function getAll()
-//         {
-//             $returned_riders = $GLOBALS['DB']->query("SELECT * FROM riders;");
-//             $riders = array();
-//             foreach($returned_riders as $rider) {
-//                 $name = $rider['name'];
-//                 $id = $rider['id'];
-//                 $new_rider = new Rider($name, $id);
-//                 array_push($riders, $new_rider);
-//             }
-//             return $riders;
-//         }
-//
-//
+        function setDescription($new_description)
+        {
+            $this->description = (string) $new_description;
+        }
+        function getDescription()
+        {
+            return $this->description;
+        }
+
+        function setTypeId($new_type_id)
+        {
+            $this->type_id = (string) $new_type_id;
+        }
+        function getTypeId()
+        {
+            return $this->type_id;
+        }
+
+        function setId($new_id)
+        {
+            $this->id = (string) $new_id;
+        }
+        function getId()
+        {
+            return $this->id;
+        }
+
+//Regular Methods
+        function save()
+        {
+          $GLOBALS['DB']->exec("INSERT INTO services (name, description, type_id) VALUES ('{$this->getName()}', '{$this->getDescription()}', {$this->getTypeId()});");
+          $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+//Static Methods
+        static function getAll()
+        {
+            $returned_services = $GLOBALS['DB']->query("SELECT * FROM services;");
+            $services = array();
+            foreach($returned_services as $service) {
+                $name = $service['name'];
+                $description = $service['description'];
+                $type_id = $service['type_id'];
+                $id = $service['id'];
+                $new_service = new Rider($name, $description, $type_id, $id);
+                array_push($services, $new_service);
+            }
+            return $services;
+        }
+
+
 //         static function deleteAll()
 //         {
 //             $GLOBALS['DB']->exec("DELETE FROM riders;");
