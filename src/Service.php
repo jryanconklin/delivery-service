@@ -35,7 +35,7 @@
 
         function setTypeId($new_type_id)
         {
-            $this->type_id = (string) $new_type_id;
+            $this->type_id = $new_type_id;
         }
         function getTypeId()
         {
@@ -44,14 +44,13 @@
 
         function setId($new_id)
         {
-            $this->id = (string) $new_id;
+            $this->id = $new_id;
         }
         function getId()
         {
             return $this->id;
         }
 
-//Regular Methods
         function save()
         {
           $GLOBALS['DB']->exec("INSERT INTO services (name, description, type_id) VALUES ('{$this->getName()}', '{$this->getDescription()}', {$this->getTypeId()});");
@@ -68,7 +67,7 @@
                 $description = $service['description'];
                 $type_id = $service['type_id'];
                 $id = $service['id'];
-                $new_service = new Rider($name, $description, $type_id, $id);
+                $new_service = new Service($name, $description, $type_id, $id);
                 array_push($services, $new_service);
             }
             return $services;

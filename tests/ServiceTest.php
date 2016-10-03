@@ -4,9 +4,14 @@
     * @backupStaticAttributes disabled
     */
 
-    require_once __DIR__."/../inc/ConnectionTest.php";
+    // require_once __DIR__."/../inc/ConnectionTest.php";
     require_once __DIR__."/../src/Rider.php";
     require_once __DIR__."/../src/Service.php";
+
+    $server = 'mysql:host=localhost;dbname=delivery_test';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
     class ServiceTest extends PHPUnit_Framework_TestCase
     {
@@ -49,18 +54,20 @@
             $this->assertEquals($new_name, $result);
         }
 
-        function test_save()
+        function test_serviceSave()
         {
           //Arrange
-          $name = "Tom Hanks";
-          $test_rider = new Service($name);
+          $name = "Moving help";
+          $description = "We'll send a capable pair of hands your way to do some packing and lugging!";
+          $type_id = 1;
+          $test_service = new Service($name, $description, $type_id);
           //Act
-          $test_rider->save();
+          $test_service->save();
           $result = Service::getAll();
           //Assert
-          $this->assertEquals([$test_rider], $result);
+          $this->assertEquals([$test_service], $result);
         }
-    
+
     //     function test_getAll()
     //     {
     //       //Arrange
