@@ -27,5 +27,19 @@
             //Assert
             $this->assertEquals($name, $result);
         }
+
+        function test_getRiderId()
+        {
+            //Arrange
+            $name = "Tom Hanks";
+            $id = 1;
+            $test_rider = new Rider($name, $id);
+
+            //Act
+            $result = $test_rider->getId();
+
+            //Assert
+            $this->assertEquals($id, $result);
+        }
     }
 ?>
