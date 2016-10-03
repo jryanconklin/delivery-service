@@ -36,7 +36,7 @@
         {
             //Arrange
             $name = "Moving help";
-            $description = "We'll send a capable pair of hands your way to do some packing and lugging!";
+            $description = "Well send a capable pair of hands your way to do some packing and lugging!";
             $type_id = 1;
             $id = 1;
             $test_service = new Service($name, $description, $type_id, $id);
@@ -133,5 +133,11 @@
             //Assert
             $this->assertEquals($test_service, $result);
         }
+
+        // function test_addService()
+        // {
+        //     //Arrange
+        //
+        // }
     }
 ?>

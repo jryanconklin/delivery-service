@@ -13,7 +13,7 @@
         protected function tearDown()
         {
             Rider::deleteAll();
-            // ::deleteAll();
+            Service::deleteAll();
         }
         function test_getRiderName()
         {
@@ -123,6 +123,7 @@
             $description = "We send a capable pair of hands your way to do some packing and lugging!";
             $type_id = 1;
             $test_service = new Service($name, $description, $type_id);
+            $test_service->save();
 
             //Act
             $test_rider->addService($test_service);

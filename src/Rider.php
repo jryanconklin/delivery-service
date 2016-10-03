@@ -36,6 +36,29 @@
           $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function addService($new_service)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO riders_services (rider_id, service_id) VALUES ({$this->getId()}, {$new_service->getId()});");
+        }
+
+        function getServices()
+        {
+            $returned_services = $GLOBALS['DB']->query("SELECT services.* FROM riders
+                JOIN riders_services ON (riders_services.rider_id = riders.id)
+                JOIN services ON (services.id = riders_services.service_id)
+                WHERE riders.id = {$this->getId()};");
+            $services = array();
+            foreach($returned_services as $service) {
+                $name = $service['name'];
+                $description = $service['description'];
+                $type_id = $service['type_id'];
+                $id = $service['id'];
+                $new_service = new Service($name, $description, $type_id, $id);
+                array_push($services, $new_service);
+            }
+            return $services;
+        }
+
 //Static Methods
         static function getAll()
         {
