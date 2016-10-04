@@ -175,6 +175,160 @@
             $this->assertEquals($country, $result);
         }
 
+        function test_setAddressType()
+        {
+            //Arrange
+            $id = 1;
+            $address_type = "Residential";
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
+            $city = "Portland";
+            $state = "OR";
+            $zip = "97214";
+            $country = "United States";
+            $address1 = new Address($address_type, $address_one, $address_two, $city, $state, $zip, $country, $id);
+
+            //Act
+            $new_address_type = "Business";
+            $address1->setAddressType($new_address_type);
+            $result = $address1->getAddressType();
+
+            //Assert
+            $this->assertEquals($new_address_type, $result);
+        }
+
+        function test_setAddressOne()
+        {
+            //Arrange
+            $id = 1;
+            $address_type = "Residential";
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
+            $city = "Portland";
+            $state = "OR";
+            $zip = "97214";
+            $country = "United States";
+            $address1 = new Address($address_type, $address_one, $address_two, $city, $state, $zip, $country, $id);
+
+            //Act
+            $new_address_one = "New Place Ave";
+            $address1->setAddressOne($new_address_one);
+            $result = $address1->getAddressOne();
+
+            //Assert
+            $this->assertEquals($new_address_one, $result);
+        }
+
+        function test_setAddressTwo()
+        {
+            //Arrange
+            $id = 1;
+            $address_type = "Residential";
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
+            $city = "Portland";
+            $state = "OR";
+            $zip = "97214";
+            $country = "United States";
+            $address1 = new Address($address_type, $address_one, $address_two, $city, $state, $zip, $country, $id);
+
+            //Act
+            $new_address_two = "New Place Ave";
+            $address1->setAddressTwo($new_address_two);
+            $result = $address1->getAddressTwo();
+
+            //Assert
+            $this->assertEquals($new_address_two, $result);
+        }
+
+        function test_setCity()
+        {
+            //Arrange
+            $id = 1;
+            $address_type = "Residential";
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
+            $city = "Portland";
+            $state = "OR";
+            $zip = "97214";
+            $country = "United States";
+            $address1 = new Address($address_type, $address_one, $address_two, $city, $state, $zip, $country, $id);
+
+            //Act
+            $new_city = "New City";
+            $address1->setCity($new_city);
+            $result = $address1->getCity();
+
+            //Assert
+            $this->assertEquals($new_city, $result);
+        }
+
+        function test_setState()
+        {
+            //Arrange
+            $id = 1;
+            $address_type = "Residential";
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
+            $city = "Portland";
+            $state = "OR";
+            $zip = "97214";
+            $country = "United States";
+            $address1 = new Address($address_type, $address_one, $address_two, $city, $state, $zip, $country, $id);
+
+            //Act
+            $new_state = "WA";
+            $address1->setState($new_state);
+            $result = $address1->getState();
+
+            //Assert
+            $this->assertEquals($new_state, $result);
+        }
+
+        function test_setZip()
+        {
+            //Arrange
+            $id = 1;
+            $address_type = "Residential";
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
+            $city = "Portland";
+            $state = "OR";
+            $zip = "97214";
+            $country = "United States";
+            $address1 = new Address($address_type, $address_one, $address_two, $city, $state, $zip, $country, $id);
+
+            //Act
+            $new_zip = 98773;
+            $address1->setZip($new_zip);
+            $result = $address1->getZip();
+
+            //Assert
+            $this->assertEquals($new_zip, $result);
+        }
+
+        function test_setCountry()
+        {
+            //Arrange
+            $id = 1;
+            $address_type = "Residential";
+            $address_one = "345 SE Taylor St";
+            $address_two = "";
+            $city = "Portland";
+            $state = "OR";
+            $zip = "97214";
+            $country = "United States";
+            $address1 = new Address($address_type, $address_one, $address_two, $city, $state, $zip, $country, $id);
+
+            //Act
+            $new_country = "Canada";
+            $address1->setCountry($new_country);
+            $result = $address1->getCountry();
+
+            //Assert
+            $this->assertEquals($new_country, $result);
+        }
+
 
 
 //End Test
