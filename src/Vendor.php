@@ -5,30 +5,29 @@
 //Properties
         private $id;
         private $name;
+        private $description;
+        private $phone;
+        private $url;
+        private $photo;
         private $type_id;
-        private $address_one;
-        private $address_two;
-        private $city;
-        private $state;
-        private $zip;
-        private $country;
+        private $address_id;
 
 //Constructor
-        function __construct($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id = null)
+        function __construct($name, $description, $phone, $url, $photo, $type_id, $address_id, $id = null)
         {
             $this->id = $id;
             $this->name = $name;
+            $this->description = $description;
+            $this->phone = $phone;
+            $this->url = $url;
+            $this->photo = $photo;
             $this->type_id = $type_id;
-            $this->address_one = $address_one;
-            $this->address_two = $address_two;
-            $this->city = $city;
-            $this->state = $state;
-            $this->zip = $zip;
-            $this->country = $country;
+            $this->address_id = $address_id;
         }
 
 //Getter and Setter Methods
         //Getters
+
         function getId()
         {
             return $this->id;
@@ -39,39 +38,34 @@
             return $this->name;
         }
 
+        function getDescription()
+        {
+            return $this->description;
+        }
+
+        function getPhone()
+        {
+            return $this->phone;
+        }
+
+        function getUrl()
+        {
+            return $this->url;
+        }
+
+        function getPhoto()
+        {
+            return $this->photo;
+        }
+
         function getTypeId()
         {
             return $this->type_id;
         }
 
-        function getAddressOne()
+        function getAddressId()
         {
-            return $this->address_one;
-        }
-
-        function getAddressTwo()
-        {
-            return $this->address_two;
-        }
-
-        function getCity()
-        {
-            return $this->city;
-        }
-
-        function getState()
-        {
-            return $this->state;
-        }
-
-        function getZip()
-        {
-            return $this->zip;
-        }
-
-        function getCountry()
-        {
-            return $this->country;
+            return $this->address_id;
         }
 
         //Setters
@@ -80,54 +74,50 @@
             $this->name = (string) $new_name;
         }
 
+        function setDescription($new_description)
+        {
+            $this->description = (string) $new_description;
+        }
+
+        function setPhone($new_phone)
+        {
+            $this->phone = (string) $new_phone;
+        }
+
+        function setUrl($new_url)
+        {
+            $this->url = (string) $new_url;
+        }
+
+        function setPhoto($new_photo)
+        {
+            $this->photo = (string) $new_photo;
+        }
+
         function setTypeId($new_type_id)
         {
             $this->type_id = (integer) $new_type_id;
         }
 
-        function setAddressOne($new_address_one)
+        function setAddressId($new_address_id)
         {
-            $this->address_one = (string) $new_address_one;
+            $this->address_id = (string) $new_address_id;
         }
 
-        function setAddressTwo($new_address_two)
-        {
-            $this->address_two = (string) $new_address_two;
-        }
-
-        function setCity($new_city)
-        {
-            $this->city = (string) $new_city;
-        }
-
-        function setState($new_state)
-        {
-            $this->state = (string) $new_state;
-        }
-
-        function setZip($new_zip)
-        {
-            $this->zip = (integer) $new_zip;
-        }
-
-        function setCountry($new_country)
-        {
-            $this->country = (string) $new_country;
-        }
 
 //Regular Methods
         function save()
         {
             $GLOBALS['DB']->exec(
-            "INSERT INTO vendors (name, type_id, address_one, address_two, city, state, zip, country)
+            "INSERT INTO vendors (name, description, phone, url, photo, type_id, address_id)
             VALUES (
                 '{$this->getName()}',
+                '{$this->getDescription()}',
+                '{$this->getPhone()}',
+                '{$this->getUrl()}',
+                '{$this->getPhoto()}',
                 {$this->getTypeId()},
-                '{$this->getAddressOne()}', '{$this->getAddressTwo()}',
-                '{$this->getCity()}',
-                '{$this->getState()}',
-                {$this->getZip()},
-                '{$this->getCountry()}'
+                {$this->getAddressId()}
                 );"
             );
             $this->id = $GLOBALS['DB']->lastInsertId();
@@ -154,15 +144,14 @@
             foreach($returned_vendors as $vendor) {
                 $id = $vendor['id'];
                 $name = $vendor['name'];
+                $description = $vendor['description'];
+                $phone = $vendor['phone'];
+                $url = $vendor['url'];
+                $photo = $vendor['photo'];
                 $type_id = $vendor['type_id'];
-                $address_one = $vendor['address_one'];
-                $address_two = $vendor['address_two'];
-                $city = $vendor['city'];
-                $state = $vendor['state'];
-                $zip = $vendor['zip'];
-                $country = $vendor['country'];
+                $address_id = $vendor['address_id'];
 
-                $new_vendor = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+                $new_vendor = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
 
                 array_push($all_vendors, $new_vendor);
             }
@@ -180,14 +169,14 @@
             foreach ($vendors as $vendor) {
                 $id = $vendor['id'];
                 $name = $vendor['name'];
+                $description = $vendor['description'];
+                $phone = $vendor['phone'];
+                $url = $vendor['url'];
+                $photo = $vendor['photo'];
                 $type_id = $vendor['type_id'];
-                $address_one = $vendor['address_one'];
-                $address_two = $vendor['address_two'];
-                $city = $vendor['city'];
-                $state = $vendor['state'];
-                $zip = $vendor['zip'];
-                $country = $vendor['country'];
-                $found_vendor = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+                $address_id = $vendor['address_id'];
+
+                $found_vendor = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
                 return $found_vendor;
             }
         }

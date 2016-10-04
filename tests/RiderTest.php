@@ -5,22 +5,30 @@
     */
 
     require_once __DIR__."/../inc/ConnectionTest.php";
+    require_once __DIR__."/../src/Address.php";
     require_once __DIR__."/../src/Rider.php";
     require_once __DIR__."/../src/Service.php";
+    require_once __DIR__."/../src/Vendor.php";
 
     class RiderTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
+            Address::deleteAll();
             Rider::deleteAll();
             Service::deleteAll();
+            Vendor::deleteAll();
         }
+
         function test_getRiderName()
         {
             //Arrange
             $name = "Tom Hanks";
+            $phone = "888-888-8888";
+            $location = "Couch ave. and NW 5th ave.";
+            $available = 1;
             $id = 1;
-            $test_rider = new Rider($name, $id);
+            $test_rider = new Rider($name, $phone, $location, $available, $id);
 
             //Act
             $result = $test_rider->getName();
@@ -29,79 +37,130 @@
             $this->assertEquals($name, $result);
         }
 
-        function test_getRiderId()
+        function test_setRiderPhone()
         {
             //Arrange
             $name = "Tom Hanks";
+            $phone = "888-888-8888";
+            $location = "Couch ave. and NW 5th ave.";
+            $available = 1;
             $id = 1;
-            $test_rider = new Rider($name, $id);
+            $test_rider = new Rider($name, $phone, $location, $available, $id);
 
             //Act
-            $result = $test_rider->getId();
+            $new_phone = "999-999-9999";
+            $test_rider->setPhone($new_phone);
+            $result = $test_rider->getPhone();
+
 
             //Assert
-            $this->assertEquals($id, $result);
+            $this->assertEquals($new_phone, $result);
         }
 
         function test_save()
         {
-          //Arrange
-          $name = "Tom Hanks";
-          $test_rider = new Rider($name);
-          //Act
-          $test_rider->save();
-          $result = Rider::getAll();
-          //Assert
-          $this->assertEquals([$test_rider], $result);
+            //Arrange
+            $name = "Tom Hanks";
+            $phone = "888-888-8888";
+            $location = "Couch ave. and NW 5th ave.";
+            $available = 1;
+            $test_rider = new Rider($name, $phone, $location, $available);
+            //Act
+            $test_rider->save();
+            $result = Rider::getAll();
+            //Assert
+            $this->assertEquals([$test_rider], $result);
         }
 
         function test_getAll()
         {
-          //Arrange
-          $name = "Tom Hanks";
-          $test_rider = new Rider($name);
-          $test_rider->save();
+            //Arrange
+            $name = "Tom Hanks";
+            $phone = "888-888-8888";
+            $location = "Couch ave. and NW 5th ave.";
+            $available = 1;
+            $test_rider = new Rider($name, $phone, $location, $available);
+            $test_rider->save();
 
-          $name2 = "Meg Ryan";
-          $test_rider2 = new Rider($name2);
-          $test_rider2->save();
+            $name2 = "Meg Ryan";
+            $phone2 = "999-999-9999";
+            $location2 = "Couch ave. and NW 6th ave.";
+            $available2 = 1;
+            $test_rider2 = new Rider($name2, $phone2, $location2, $available2);
+            $test_rider2->save();
 
-          //Act
-          $result = Rider::getAll();
+            //Act
+            $result = Rider::getAll();
 
-          //Assert
-          $this->assertEquals([$test_rider, $test_rider2], $result);
+            //Assert
+            $this->assertEquals([$test_rider, $test_rider2], $result);
+        }
+
+        function test_update()
+        {
+            //Arrange
+            $name = "Tom Hanks";
+            $phone = "888-888-8888";
+            $location = "Couch ave. and NW 5th ave.";
+            $available = 1;
+            $test_rider = new Rider($name, $phone, $location, $available);
+            $test_rider->save();
+
+            $name2 = "Meg Ryan";
+            $phone2 = "999-999-9999";
+            $location2 = "Couch ave. and NW 6th ave.";
+            $available2 = 1;
+            $test_rider2 = new Rider($name2, $phone2, $location2, $available2);
+            $test_rider2->save();
+
+            //Act
+            $test_rider->update($name2, $phone2, $location2, $available2);
+            $result = Rider::getAll();
+
+            //Assert
+            $this->assertEquals([$test_rider, $test_rider2], $result);
         }
 
         function test_deleteAll()
         {
-          //Arrange
-          $name = "Tom Hanks";
-          $test_rider = new Rider($name);
-          $test_rider->save();
+            //Arrange
+            $name = "Tom Hanks";
+            $phone = "888-888-8888";
+            $location = "Couch ave. and NW 5th ave.";
+            $available = 1;
+            $test_rider = new Rider($name, $phone, $location, $available);
+            $test_rider->save();
 
-          $name2 = "Meg Ryan";
-          $test_rider2 = new Rider($name2);
-          $test_rider2->save();
+            $name2 = "Meg Ryan";
+            $phone2 = "999-999-9999";
+            $location2 = "Couch ave. and NW 6th ave.";
+            $available2 = 1;
+            $test_rider2 = new Rider($name2, $phone2, $location2, $available2);
+            $test_rider2->save();
 
-          //Act
-          Rider::deleteAll();
-          $result = Rider::getAll();
+            //Act
+            Rider::deleteAll();
+            $result = Rider::getAll();
 
-
-          //Assert
-          $this->assertEquals([], $result);
+            //Assert
+            $this->assertEquals([], $result);
         }
 
         function test_riderFind()
         {
             //Arrange
             $name = "Tom Hanks";
-            $test_rider = new Rider($name);
+            $phone = "888-888-8888";
+            $location = "Couch ave. and NW 5th ave.";
+            $available = 1;
+            $test_rider = new Rider($name, $phone, $location, $available);
             $test_rider->save();
 
             $name2 = "Meg Ryan";
-            $test_rider2 = new Rider($name2);
+            $phone2 = "999-999-9999";
+            $location2 = "Couch ave. and NW 6th ave.";
+            $available2 = 1;
+            $test_rider2 = new Rider($name2, $phone2, $location2, $available2);
             $test_rider2->save();
 
             //Act
@@ -116,7 +175,10 @@
         {
             //Arrange
             $name = "Tom Hanks";
-            $test_rider = new Rider($name);
+            $phone = "888-888-8888";
+            $location = "Couch ave. and NW 5th ave.";
+            $available = 1;
+            $test_rider = new Rider($name, $phone, $location, $available);
             $test_rider->save();
 
             $name = "Moving help";
@@ -137,7 +199,10 @@
         {
             //Arrange
             $name = "Tom Hanks";
-            $test_rider = new Rider($name);
+            $phone = "888-888-8888";
+            $location = "Couch ave. and NW 5th ave.";
+            $available = 1;
+            $test_rider = new Rider($name, $phone, $location, $available);
             $test_rider->save();
 
             $name = "Moving help";
@@ -160,5 +225,7 @@
             //Assert
             $this->assertEquals([$test_service, $test_service2], $result);
         }
+
+//End Test
     }
 ?>

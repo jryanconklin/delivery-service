@@ -75,8 +75,11 @@
             $riders = array();
             foreach($returned_riders as $rider) {
                 $name = $rider['name'];
+                $phone = $rider['phone'];
+                $location = $rider['location'];
+                $available = $rider['available'];
                 $id = $rider['id'];
-                $new_rider = new Rider($name, $id);
+                $new_rider = new Rider($name, $phone, $location, $available, $id);
                 array_push($riders, $new_rider);
             }
             return $riders;

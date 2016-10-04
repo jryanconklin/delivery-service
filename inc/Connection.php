@@ -10,13 +10,13 @@
     // } // native exception class
 
 // Home Connection #2
-    $server = 'mysql:host=localhost:8889;dbname=delivery';
-    $username = 'root';
-    $password = 'root';
-    $DB = new PDO($server, $username, $password);
-
-//Epicodus Connection
-    // $server = 'mysql:host=localhost;dbname=delivery';
+    // $server = 'mysql:host=localhost:8889;dbname=delivery';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
+
+//Epicodus Connection
+    $server = 'mysql:host=localhost;dbname=delivery';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);

@@ -107,18 +107,94 @@
 
 
 //Regular Methods
+        function save()
+        {
+            $GLOBALS['DB']->exec(
+            "INSERT INTO addresses (address_type, address_one, address_two, city, state, zip, country)
+            VALUES (
+                '{$this->getAddressType()}',
+                '{$this->getAddressOne()}',
+                '{$this->getAddressTwo()}',
+                '{$this->getCity()}',
+                '{$this->getState()}',
+                {$this->getZip()},
+                '{$this->getCountry()}'
+                );"
+            );
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
 
+        function update($new_type, $new_address_one, $new_address_two, $new_city, $new_state, $new_zip, $new_country)
+        {
+            $GLOBALS['DB']->exec(
+            "UPDATE addresses
+            SET address_type = '{$new_type}',
+            address_one = '{$new_address_one}',
+            address_two = '{$new_address_two}',
+            city = '{$new_city}',
+            state = '{$new_state}',
+            zip = {$new_zip},
+            country = '{$new_country}'
+            WHERE id = {$this->getId()};");
+            $this->setAddressType($new_type);
+            $this->setAddressOne($new_address_one);
+            $this->setAddressTwo($new_address_two);
+            $this->setCity($new_city);
+            $this->setState($new_state);
+            $this->setZip($new_zip);
+            $this->setCountry($new_country);
+        }
 
-
-
-
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM addresses WHERE id = {$this->getId()};");
+        }
 
 
 //Static Methods
+        static function getAll()
+        {
+            $all_addresses = array();
+            $returned_addresses = $GLOBALS['DB']->query("SELECT * FROM addresses;");
 
+            foreach($returned_addresses as $address) {
+                $id = $address['id'];
+                $address_type = $address['address_type'];
+                $address_one = $address['address_one'];
+                $address_two = $address['address_two'];
+                $city = $address['city'];
+                $state = $address['state'];
+                $zip = $address['zip'];
+                $country = $address['country'];
 
+                $new_address = new Address($address_type, $address_one, $address_two, $city, $state, $zip, $country, $id);
 
+                array_push($all_addresses, $new_address);
+            }
+            return $all_addresses;
+        }
 
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM addresses;");
+        }
+
+        static function findById($search_id)
+        {
+            $addresses = $GLOBALS['DB']->query("SELECT * FROM addresses WHERE id = {$search_id};");
+            foreach ($addresses as $address) {
+                $id = $address['id'];
+                $address_type = $address['address_type'];
+                $address_one = $address['address_one'];
+                $address_two = $address['address_two'];
+                $city = $address['city'];
+                $state = $address['state'];
+                $zip = $address['zip'];
+                $country = $address['country'];
+                $found_address = new Address($address_type, $address_one, $address_two, $city, $state, $zip, $country, $id);
+                return $found_address;
+            }
+        }
 
 
 //End Class

@@ -5,17 +5,21 @@
     */
 
     require_once __DIR__."/../inc/ConnectionTest.php";
+    require_once __DIR__."/../src/Address.php";
     require_once __DIR__."/../src/Rider.php";
     require_once __DIR__."/../src/Service.php";
-
+    require_once __DIR__."/../src/Vendor.php";
 
     class ServiceTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
+            Address::deleteAll();
+            Rider::deleteAll();
             Service::deleteAll();
-            // Rider::deleteAll();
+            Vendor::deleteAll();
         }
+
         function test_getServiceName()
         {
             //Arrange
@@ -52,63 +56,63 @@
 
         function test_serviceSave()
         {
-          // Arrange
-          $name = "Moving help";
-          $description = "test test";
-          $type_id = 1;
-          $test_service = new Service($name, $description, $type_id);
-          $test_service->save();
+            // Arrange
+            $name = "Moving help";
+            $description = "test test";
+            $type_id = 1;
+            $test_service = new Service($name, $description, $type_id);
+            $test_service->save();
 
-          //Act
-          $result = Service::getAll();
-          //Assert
-          $this->assertEquals([$test_service], $result);
+            //Act
+            $result = Service::getAll();
+            //Assert
+            $this->assertEquals([$test_service], $result);
         }
 
         function test_getAll()
         {
-          //Arrange
-          $name = "Moving help";
-          $description = "test test";
-          $type_id = 1;
-          $test_service = new Service($name, $description, $type_id);
-          $test_service->save();
+            //Arrange
+            $name = "Moving help";
+            $description = "test test";
+            $type_id = 1;
+            $test_service = new Service($name, $description, $type_id);
+            $test_service->save();
 
-          $name2 = "Math Tutoring";
-          $description2 = "test test";
-          $type_id2 = 2;
-          $test_service2 = new Service($name2, $description2, $type_id2);
-          $test_service2->save();
+            $name2 = "Math Tutoring";
+            $description2 = "test test";
+            $type_id2 = 2;
+            $test_service2 = new Service($name2, $description2, $type_id2);
+            $test_service2->save();
 
-          //Act
-          $result = Service::getAll();
+            //Act
+            $result = Service::getAll();
 
-          //Assert
-          $this->assertEquals([$test_service, $test_service2], $result);
+            //Assert
+            $this->assertEquals([$test_service, $test_service2], $result);
         }
 
 
         function test_deleteAll()
         {
-          //Arrange
-          $name = "Moving help";
-          $description = "test test";
-          $type_id = 1;
-          $test_service = new Service($name, $description, $type_id);
-          $test_service->save();
+            //Arrange
+            $name = "Moving help";
+            $description = "test test";
+            $type_id = 1;
+            $test_service = new Service($name, $description, $type_id);
+            $test_service->save();
 
-          $name2 = "Math Tutoring";
-          $description2 = "test test";
-          $type_id2 = 2;
-          $test_service2 = new Service($name2, $description2, $type_id2);
-          $test_service2->save();
+            $name2 = "Math Tutoring";
+            $description2 = "test test";
+            $type_id2 = 2;
+            $test_service2 = new Service($name2, $description2, $type_id2);
+            $test_service2->save();
 
-          //Act
-          Service::deleteAll();
-          $result = Service::getAll();
+            //Act
+            Service::deleteAll();
+            $result = Service::getAll();
 
-          //Assert
-          $this->assertEquals([], $result);
+            //Assert
+            $this->assertEquals([], $result);
         }
 
         function test_serviceFind()
@@ -144,11 +148,18 @@
             $test_service->save();
 
             $name = "Tom Hanks";
-            $test_rider = new Rider($name);
+            $phone = "888-888-8888";
+            $location = "Couch ave. and NW 5th ave.";
+            $available = 1;
+            $test_rider = new Rider($name, $phone, $location, $available);
             $test_rider->save();
 
+
             $name2 = "Meg Ryan";
-            $test_rider2 = new Rider($name2);
+            $phone2 = "999-999-9999";
+            $location2 = "Couch ave. and NW 6th ave.";
+            $available2 = 1;
+            $test_rider2 = new Rider($name2, $phone2, $location2, $available2);
             $test_rider2->save();
 
 
@@ -170,11 +181,18 @@
             $test_service->save();
 
             $name = "Tom Hanks";
-            $test_rider = new Rider($name);
+            $phone = "888-888-8888";
+            $location = "Couch ave. and NW 5th ave.";
+            $available = 1;
+            $test_rider = new Rider($name, $phone, $location, $available);
             $test_rider->save();
 
+
             $name2 = "Meg Ryan";
-            $test_rider2 = new Rider($name2);
+            $phone2 = "999-999-9999";
+            $location2 = "Couch ave. and NW 6th ave.";
+            $available2 = 1;
+            $test_rider2 = new Rider($name2, $phone2, $location2, $available2);
             $test_rider2->save();
 
             //Act
@@ -185,5 +203,7 @@
             //Assert
             $this->assertEquals([$test_rider, $test_rider2], $result);
         }
+
+//End Test
     }
 ?>

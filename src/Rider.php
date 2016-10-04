@@ -3,11 +3,17 @@
     class Rider
     {
         private $name;
+        private $phone;
+        private $location;
+        private $available;
         private $id;
 
-        function __construct($name, $id=null)
+        function __construct($name, $phone, $location, $available = 1, $id=null)
         {
             $this->name = $name;
+            $this->phone = $phone;
+            $this->location = $location;
+            $this->available = $available;
             $this->id = $id;
         }
 //Getter and Setter Methods
@@ -20,10 +26,33 @@
             return $this->name;
         }
 
-        function setId($new_id)
+        function setPhone($new_phone)
         {
-            $this->id = (string) $new_id;
+            $this->phone = (string) $new_phone;
         }
+        function getPhone()
+        {
+            return $this->phone;
+        }
+
+        function setLocation($new_location)
+        {
+            $this->location = (string) $new_location;
+        }
+        function getLocation()
+        {
+            return $this->location;
+        }
+
+        function setAvailable($new_available)
+        {
+            $this->available = (string) $new_available;
+        }
+        function getAvailable()
+        {
+            return $this->available;
+        }
+
         function getId()
         {
             return $this->id;
@@ -32,9 +61,33 @@
 //Regular Methods
         function save()
         {
-          $GLOBALS['DB']->exec("INSERT INTO riders (name) VALUES ('{$this->getName()}');");
-          $this->id = $GLOBALS['DB']->lastInsertId();
+            $GLOBALS['DB']->exec(
+            "INSERT INTO riders (name, phone, location, available)
+            VALUES (
+                '{$this->getName()}',
+                '{$this->getPhone()}',
+                '{$this->getLocation()}',
+                {$this->getAvailable()}
+                );"
+            );
+            $this->id = $GLOBALS['DB']->lastInsertId();
         }
+
+        function update($new_name, $new_phone, $new_location, $new_available)
+        {
+            $GLOBALS['DB']->exec(
+            "UPDATE riders
+            SET name = '{$new_name}',
+            phone = '{$new_phone}',
+            location = '{$new_location}',
+            available = {$new_available}
+            WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+            $this->setPhone($new_phone);
+            $this->setLocation($new_location);
+            $this->setAvailable($new_available);
+        }
+
 
         function addService($new_service)
         {
@@ -59,6 +112,11 @@
             return $services;
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM riders WHERE id = {$this->getId()};");
+        }
+
 //Static Methods
         static function getAll()
         {
@@ -66,8 +124,11 @@
             $riders = array();
             foreach($returned_riders as $rider) {
                 $name = $rider['name'];
+                $phone = $rider['phone'];
+                $location = $rider['location'];
+                $available = $rider['available'];
                 $id = $rider['id'];
-                $new_rider = new Rider($name, $id);
+                $new_rider = new Rider($name, $phone, $location, $available, $id);
                 array_push($riders, $new_rider);
             }
             return $riders;
