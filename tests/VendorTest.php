@@ -6,15 +6,19 @@
     */
 
     require_once __DIR__."/../inc/ConnectionTest.php";
+    require_once __DIR__."/../src/Address.php";
+    require_once __DIR__."/../src/Rider.php";
+    require_once __DIR__."/../src/Service.php";
     require_once __DIR__."/../src/Vendor.php";
-    // require_once __DIR__."/../src/SecondClass.php";
 
     class VendorTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
+            Address::deleteAll();
+            Rider::deleteAll();
+            Service::deleteAll();
             Vendor::deleteAll();
-            // SecondClass::deleteAll();
         }
 
         function test_getId()
@@ -22,14 +26,13 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
             $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
 
             //Act
             $result = $vendor1->getId();
@@ -43,14 +46,13 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
             $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
 
             //Act
             $result = $vendor1->getName();
@@ -59,19 +61,99 @@
             $this->assertEquals($name, $result);
         }
 
+        function test_getDescription()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
+            $type_id = 2;
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
+
+            //Act
+            $result = $vendor1->getDescription();
+
+            //Assert
+            $this->assertEquals($description, $result);
+        }
+
+        function test_getPhone()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
+            $type_id = 2;
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
+
+            //Act
+            $result = $vendor1->getPhone();
+
+            //Assert
+            $this->assertEquals($phone, $result);
+        }
+
+        function test_getUrl()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
+            $type_id = 2;
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
+
+            //Act
+            $result = $vendor1->getUrl();
+
+            //Assert
+            $this->assertEquals($url, $result);
+        }
+
+        function test_getPhoto()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
+            $type_id = 2;
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
+
+            //Act
+            $result = $vendor1->getPhoto();
+
+            //Assert
+            $this->assertEquals($photo, $result);
+        }
+
+
         function test_getTypeId()
         {
             //Arrange
             $id = 1;
             $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
             $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
 
             //Act
             $result = $vendor1->getTypeId();
@@ -80,130 +162,24 @@
             $this->assertEquals($type_id, $result);
         }
 
-        function test_getAddressOne()
+        function test_getAddressId()
         {
             //Arrange
             $id = 1;
             $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
             $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
 
             //Act
-            $result = $vendor1->getAddressOne();
+            $result = $vendor1->getAddressId();
 
             //Assert
-            $this->assertEquals($address_one, $result);
-        }
-
-        function test_getAddressTwo()
-        {
-            //Arrange
-            $id = 1;
-            $name = "Guardian Games";
-            $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
-
-            //Act
-            $result = $vendor1->getAddressTwo();
-
-            //Assert
-            $this->assertEquals($address_two, $result);
-        }
-
-        function test_getCity()
-        {
-            //Arrange
-            $id = 1;
-            $name = "Guardian Games";
-            $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
-
-            //Act
-            $result = $vendor1->getCity();
-
-            //Assert
-            $this->assertEquals($city, $result);
-        }
-
-        function test_getState()
-        {
-            //Arrange
-            $id = 1;
-            $name = "Guardian Games";
-            $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
-
-            //Act
-            $result = $vendor1->getState();
-
-            //Assert
-            $this->assertEquals($state, $result);
-        }
-
-        function test_getZip()
-        {
-            //Arrange
-            $id = 1;
-            $name = "Guardian Games";
-            $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
-
-            //Act
-            $result = $vendor1->getZip();
-
-            //Assert
-            $this->assertEquals($zip, $result);
-        }
-
-        function test_getCountry()
-        {
-            //Arrange
-            $id = 1;
-            $name = "Guardian Games";
-            $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
-
-            //Act
-            $result = $vendor1->getCountry();
-
-            //Assert
-            $this->assertEquals($country, $result);
+            $this->assertEquals($address_id, $result);
         }
 
         function test_setName()
@@ -211,14 +187,13 @@
             //Arrange
             $id = 1;
             $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
             $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
 
             //Act
             $new_name = "GG Portland";
@@ -229,19 +204,106 @@
             $this->assertEquals($new_name, $result);
         }
 
+        function test_setDescription()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
+            $type_id = 2;
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
+
+            //Act
+            $new_description = "GG Portland";
+            $vendor1->setDescription($new_description);
+            $result = $vendor1->getDescription();
+
+            //Assert
+            $this->assertEquals($new_description, $result);
+        }
+
+        function test_setPhone()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
+            $type_id = 2;
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
+
+            //Act
+            $new_phone = "111-111-1111";
+            $vendor1->setPhone($new_phone);
+            $result = $vendor1->getPhone();
+
+            //Assert
+            $this->assertEquals($new_phone, $result);
+        }
+
+        function test_setUrl()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
+            $type_id = 2;
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
+
+            //Act
+            $new_url = "https://www.ggportland.com/events";
+            $vendor1->setUrl($new_url);
+            $result = $vendor1->getUrl();
+
+            //Assert
+            $this->assertEquals($new_url, $result);
+        }
+
+        function test_setPhoto()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
+            $type_id = 2;
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
+
+            //Act
+            $new_photo = "https://www.ggportland.com/events";
+            $vendor1->setPhoto($new_photo);
+            $result = $vendor1->getPhoto();
+
+            //Assert
+            $this->assertEquals($new_photo, $result);
+        }
+
         function test_setTypeId()
         {
             //Arrange
             $id = 1;
             $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
             $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
 
             //Act
             $new_type_id = 5;
@@ -252,142 +314,26 @@
             $this->assertEquals($new_type_id, $result);
         }
 
-        function test_setAddressOne()
+        function test_setAddressId()
         {
             //Arrange
             $id = 1;
             $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
             $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
 
             //Act
-            $new_address_one = "New Place Ave";
-            $vendor1->setAddressOne($new_address_one);
-            $result = $vendor1->getAddressOne();
+            $new_address_id = 5;
+            $vendor1->setAddressId($new_address_id);
+            $result = $vendor1->getAddressId();
 
             //Assert
-            $this->assertEquals($new_address_one, $result);
-        }
-
-        function test_setAddressTwo()
-        {
-            //Arrange
-            $id = 1;
-            $name = "Guardian Games";
-            $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
-
-            //Act
-            $new_address_two = "New Place Ave";
-            $vendor1->setAddressTwo($new_address_two);
-            $result = $vendor1->getAddressTwo();
-
-            //Assert
-            $this->assertEquals($new_address_two, $result);
-        }
-
-        function test_setCity()
-        {
-            //Arrange
-            $id = 1;
-            $name = "Guardian Games";
-            $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
-
-            //Act
-            $new_city = "New City";
-            $vendor1->setCity($new_city);
-            $result = $vendor1->getCity();
-
-            //Assert
-            $this->assertEquals($new_city, $result);
-        }
-
-        function test_setState()
-        {
-            //Arrange
-            $id = 1;
-            $name = "Guardian Games";
-            $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = "97214";
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
-
-            //Act
-            $new_state = "WA";
-            $vendor1->setState($new_state);
-            $result = $vendor1->getState();
-
-            //Assert
-            $this->assertEquals($new_state, $result);
-        }
-
-        function test_setZip()
-        {
-            //Arrange
-            $id = 1;
-            $name = "Guardian Games";
-            $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = 97214;
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
-
-            //Act
-            $new_zip = 98773;
-            $vendor1->setZip($new_zip);
-            $result = $vendor1->getZip();
-
-            //Assert
-            $this->assertEquals($new_zip, $result);
-        }
-
-        function test_setCountry()
-        {
-            //Arrange
-            $id = 1;
-            $name = "Guardian Games";
-            $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = 97214;
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
-
-            //Act
-            $new_country = "Canada";
-            $vendor1->setCountry($new_country);
-            $result = $vendor1->getCountry();
-
-            //Assert
-            $this->assertEquals($new_country, $result);
+            $this->assertEquals($new_address_id, $result);
         }
 
         function test_save()
@@ -395,14 +341,13 @@
             //Arrange
             $id = null;
             $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
             $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = 97214;
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
 
             //Act
             $vendor1->save();
@@ -417,26 +362,24 @@
             //Arrange
             $id = null;
             $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
             $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = 97214;
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
             $vendor1->save();
 
             $id2 = null;
             $name2 = "Portland Game Store";
+            $description2 = "Awesome good timez!";
+            $phone2 = "999-999-9999";
+            $url2 = "http://www.theportlandgamestore.com/";
+            $photo2 = "/img/pdxgamestore.jpg";
             $type_id2 = 2;
-            $address_one2 = "345 N Killingsworth St";
-            $address_two2 = "";
-            $city2 = "Portland";
-            $state2 = "OR";
-            $zip2 = 97217;
-            $country2 = "United States";
-            $vendor2 = new Vendor($name2, $type_id2, $address_one2, $address_two2, $city2, $state2, $zip2, $country2, $id2);
+            $address_id2 = 37;
+            $vendor2 = new Vendor($name2, $description2, $phone2, $url2, $photo2, $type_id2, $address_id2, $id2);
             $vendor2->save();
 
             //Act
@@ -446,31 +389,30 @@
             $this->assertEquals([$vendor1, $vendor2], $result);
         }
 
+
         function test_delete()
         {
             //Arrange
             $id = null;
             $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
             $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = 97214;
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
             $vendor1->save();
 
             $id2 = null;
             $name2 = "Portland Game Store";
+            $description2 = "Awesome good timez!";
+            $phone2 = "999-999-9999";
+            $url2 = "http://www.theportlandgamestore.com/";
+            $photo2 = "/img/pdxgamestore.jpg";
             $type_id2 = 2;
-            $address_one2 = "345 N Killingsworth St";
-            $address_two2 = "";
-            $city2 = "Portland";
-            $state2 = "OR";
-            $zip2 = 97217;
-            $country2 = "United States";
-            $vendor2 = new Vendor($name2, $type_id2, $address_one2, $address_two2, $city2, $state2, $zip2, $country2, $id2);
+            $address_id2 = 37;
+            $vendor2 = new Vendor($name2, $description2, $phone2, $url2, $photo2, $type_id2, $address_id2, $id2);
             $vendor2->save();
 
             //Act
@@ -486,26 +428,24 @@
             //Arrange
             $id = null;
             $name = "Guardian Games";
+            $description = "Awesome good timez!";
+            $phone = "999-999-9999";
+            $url = "https://www.ggportland.com";
+            $photo = "/img/GGfacade.jpg";
             $type_id = 2;
-            $address_one = "345 SE Taylor St";
-            $address_two = "";
-            $city = "Portland";
-            $state = "OR";
-            $zip = 97214;
-            $country = "United States";
-            $vendor1 = new Vendor($name, $type_id, $address_one, $address_two, $city, $state, $zip, $country, $id);
+            $address_id = 34;
+            $vendor1 = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
             $vendor1->save();
 
             $id2 = null;
             $name2 = "Portland Game Store";
+            $description2 = "Awesome good timez!";
+            $phone2 = "999-999-9999";
+            $url2 = "http://www.theportlandgamestore.com/";
+            $photo2 = "/img/pdxgamestore.jpg";
             $type_id2 = 2;
-            $address_one2 = "345 N Killingsworth St";
-            $address_two2 = "";
-            $city2 = "Portland";
-            $state2 = "OR";
-            $zip2 = 97217;
-            $country2 = "United States";
-            $vendor2 = new Vendor($name2, $type_id2, $address_one2, $address_two2, $city2, $state2, $zip2, $country2, $id2);
+            $address_id2 = 37;
+            $vendor2 = new Vendor($name2, $description2, $phone2, $url2, $photo2, $type_id2, $address_id2, $id2);
             $vendor2->save();
 
             //Act
