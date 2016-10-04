@@ -184,7 +184,8 @@
             $name = "Moving help";
             $description = "We send a capable pair of hands your way to do some packing and lugging!";
             $type_id = 1;
-            $test_service = new Service($name, $description, $type_id);
+            $url = "service.com";
+            $test_service = new Service($name, $description, $type_id, $url);
             $test_service->save();
 
             //Act
@@ -208,13 +209,15 @@
             $name = "Moving help";
             $description = "We send a capable pair of hands your way to do some packing and lugging!";
             $type_id = 1;
-            $test_service = new Service($name, $description, $type_id);
+            $url = "service.com";
+            $test_service = new Service($name, $description, $type_id, $url);
             $test_service->save();
 
             $name2 = "Math Tutoring";
             $description2 = "test test";
-            $type_id2 = 2;
-            $test_service2 = new Service($name2, $description2, $type_id2);
+            $type_id2 = 1;
+            $url2 = "service.com";
+            $test_service2 = new Service($name2, $description2, $type_id2, $url2);
             $test_service2->save();
 
             //Act

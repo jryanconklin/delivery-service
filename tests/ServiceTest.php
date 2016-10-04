@@ -26,8 +26,9 @@
             $name = "Moving help";
             $description = "We'll send a capable pair of hands your way to do some packing and lugging!";
             $type_id = 1;
+            $url = "service.com";
             $id = 1;
-            $test_service = new Service($name, $description, $type_id, $id);
+            $test_service = new Service($name, $description, $type_id, $url, $id);
 
             //Act
             $result = $test_service->getName();
@@ -42,8 +43,9 @@
             $name = "Moving help";
             $description = "Well send a capable pair of hands your way to do some packing and lugging!";
             $type_id = 1;
+            $url = "service.com";
             $id = 1;
-            $test_service = new Service($name, $description, $type_id, $id);
+            $test_service = new Service($name, $description, $type_id, $id, $url);
 
             //Act
             $new_name = "Heavy lifting";
@@ -60,7 +62,8 @@
             $name = "Moving help";
             $description = "test test";
             $type_id = 1;
-            $test_service = new Service($name, $description, $type_id);
+            $url = "service.com";
+            $test_service = new Service($name, $description, $type_id, $url);
             $test_service->save();
 
             //Act
@@ -75,13 +78,15 @@
             $name = "Moving help";
             $description = "test test";
             $type_id = 1;
-            $test_service = new Service($name, $description, $type_id);
+            $url = "service.com";
+            $test_service = new Service($name, $description, $type_id, $url);
             $test_service->save();
 
             $name2 = "Math Tutoring";
             $description2 = "test test";
             $type_id2 = 2;
-            $test_service2 = new Service($name2, $description2, $type_id2);
+            $url2 = "service.com";
+            $test_service2 = new Service($name2, $description2, $type_id2, $url2);
             $test_service2->save();
 
             //Act
@@ -97,14 +102,16 @@
             //Arrange
             $name = "Moving help";
             $description = "test test";
+            $url = "service.com";
             $type_id = 1;
-            $test_service = new Service($name, $description, $type_id);
+            $test_service = new Service($name, $description, $type_id, $url);
             $test_service->save();
 
             $name2 = "Math Tutoring";
             $description2 = "test test";
+            $url2 = "service.com";
             $type_id2 = 2;
-            $test_service2 = new Service($name2, $description2, $type_id2);
+            $test_service2 = new Service($name2, $description2, $type_id2, $url);
             $test_service2->save();
 
             //Act
@@ -120,14 +127,16 @@
             //Arrange
             $name = "Moving help";
             $description = "test test";
+            $url = "service.com";
             $type_id = 1;
-            $test_service = new Service($name, $description, $type_id);
+            $test_service = new Service($name, $description, $type_id, $url);
             $test_service->save();
 
             $name2 = "Math Tutoring";
             $description2 = "test test";
+            $url2 = "service.com";
             $type_id2 = 2;
-            $test_service2 = new Service($name2, $description2, $type_id2);
+            $test_service2 = new Service($name2, $description2, $type_id2, $url);
             $test_service2->save();
 
             //Act
@@ -143,8 +152,9 @@
             //Arrange
             $name = "Moving help";
             $description = "We send a capable pair of hands your way to do some packing and lugging!";
+            $url = "service.com";
             $type_id = 1;
-            $test_service = new Service($name, $description, $type_id);
+            $test_service = new Service($name, $description, $type_id, $url);
             $test_service->save();
 
             $name = "Tom Hanks";
@@ -176,8 +186,9 @@
             //Arrange
             $name = "Moving help";
             $description = "We send a capable pair of hands your way to do some packing and lugging!";
+            $url = "service.com";
             $type_id = 1;
-            $test_service = new Service($name, $description, $type_id);
+            $test_service = new Service($name, $description, $type_id, $url);
             $test_service->save();
 
             $name = "Tom Hanks";

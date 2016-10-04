@@ -57,6 +57,7 @@ CREATE TABLE services (
     id serial PRIMARY KEY,
     name VARCHAR(70),
     description VARCHAR(255),
+    url VARCHAR(255),
     type_id int
 );
 

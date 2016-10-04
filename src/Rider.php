@@ -105,8 +105,9 @@
                 $name = $service['name'];
                 $description = $service['description'];
                 $type_id = $service['type_id'];
+                $url = $service['url'];
                 $id = $service['id'];
-                $new_service = new Service($name, $description, $type_id, $id);
+                $new_service = new Service($name, $description, $type_id, $url, $id);
                 array_push($services, $new_service);
             }
             return $services;

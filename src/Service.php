@@ -5,13 +5,15 @@
         private $name;
         private $description;
         private $type_id;
+        private $url;
         private $id;
 
-        function __construct($name, $description, $type_id, $id=null)
+        function __construct($name, $description, $type_id, $url, $id=null)
         {
             $this->name = $name;
             $this->description = $description;
             $this->type_id = $type_id;
+            $this->url = $url;
             $this->id = $id;
         }
 //Getter and Setter Methods
@@ -42,6 +44,15 @@
             return $this->type_id;
         }
 
+        function setUrl($new_url)
+        {
+            $this->url = $new_url;
+        }
+        function getUrl()
+        {
+            return $this->url;
+        }
+
         function setId($new_id)
         {
             $this->id = $new_id;
@@ -54,9 +65,9 @@
         function save()
         {
           $GLOBALS['DB']->exec(
-          "INSERT INTO services (name, description, type_id)
+          "INSERT INTO services (name, description, url, type_id)
 
-          VALUES ('{$this->getName()}', '{$this->getDescription()}', {$this->getTypeId()});");
+          VALUES ('{$this->getName()}', '{$this->getDescription()}', '{$this->getUrl()}', {$this->getTypeId()});");
 
           $this->id = $GLOBALS['DB']->lastInsertId();
         }
@@ -93,9 +104,10 @@
             foreach($returned_services as $service) {
                 $name = $service['name'];
                 $description = $service['description'];
+                $url = $service['url'];
                 $type_id = $service['type_id'];
                 $id = $service['id'];
-                $new_service = new Service($name, $description, $type_id, $id);
+                $new_service = new Service($name, $description, $type_id, $url, $id);
                 array_push($services, $new_service);
             }
             return $services;
