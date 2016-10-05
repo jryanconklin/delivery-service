@@ -128,6 +128,25 @@
             $this->assertEquals($test_order, $result);
         }
 
+        function test_delete()
+        {
+            //Arrange
+            $client_id = 1;
+            $rider_id = 10;
+            $address_id = 18;
+            $instructions = "this better work";
+            $details = "This is a Killer Burger Order.";
+            $test_order = new Order ($client_id, $rider_id, $address_id, $instructions, $details);
+            $test_order->save();
+
+            //Act
+            $test_order->delete();
+            $result = Order::getAll();
+
+            //Assert
+            $this->assertEquals([], $result);
+        }
+
 //End Test
     }
 ?>

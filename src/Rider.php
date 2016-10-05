@@ -153,5 +153,19 @@
             }
             return $found_rider;
         }
+
+        static function checkEligibility($service_id)
+        {
+            $all_riders = Rider::getAll();
+            $eligible_riders = array();
+            foreach ($all_riders as $rider) {
+                # code...
+            }
+        }
+
+        static function checkAvailability()
+        {
+
+        }
     }
 ?>

@@ -132,7 +132,42 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM orders WHERE id = {$this->getId()};");
+        }
 
+        function getAssignRider()
+        {
+            $assignedRider = null;
+            $service_id = $this->getServiceId();
+            $vendor_id = $this->getVendorId();
+            if(($service_id) != 0) {
+                $available_riders = Rider::checkAvailability();
+                $eligible_riders = Rider::checkEligibility($service_id);
+                foreach ($available_riders as $rider1) {
+                    foreach ($eligible_riders as $rider2) {
+                        if($rider1 == $rider2){
+                            $assignedRider = $rider1;
+                        }
+                    }
+                }
+            } elseif (($vendor_id) != 0) {
+                $available_riders = Rider::checkAvailability();
+                $assignedRider = $available_riders[0];
+            }
+            $this->setRiderId($assignedRider->getId());
+        }
+
+        function updateStatus()
+        {
+
+        }
+
+        function updateDetails()
+        {
+
+        }
 //Static Methods
         static function getAll()
         {
