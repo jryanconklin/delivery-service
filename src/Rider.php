@@ -62,11 +62,11 @@
         function save()
         {
             $GLOBALS['DB']->exec(
-            "INSERT INTO riders (name, phone, location, available)
+            "INSERT INTO riders (name, location, phone, available)
             VALUES (
                 '{$this->getName()}',
-                '{$this->getPhone()}',
                 '{$this->getLocation()}',
+                '{$this->getPhone()}',
                 {$this->getAvailable()}
                 );"
             );

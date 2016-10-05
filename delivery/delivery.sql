@@ -35,7 +35,7 @@ CREATE TABLE vendors (
 
 CREATE TABLE orders (
     id serial PRIMARY KEY,
-    status VARCHAR(100),
+    status boolean,
     details VARCHAR(255),
     instructions VARCHAR (255),
     client_id int,
