@@ -1,6 +1,103 @@
-.header{
+
+/* Main Styles */
+
+h3 {
+
+}
+
+/*ID Styles*/
+
+
+/* Class Styles */
+
+.container {
+    text-align: center;
+}
+
+.wrapper {
+  min-height: calc(100vh - 350px);
+  text-align: center;
+  max-width: 97%;
+  margin: 0 auto;
+
+}
+
+.mainHeader {
     font-family: 'Quicksand', sans-serif;
+    height: 260px;
+    padding: 2em;
+    line-height: 2em;
+    background:
+            linear-gradient(#EFEFEF, transparent 90%),
+            linear-gradient(120deg, #EFEFEF, transparent),
+            #EFEFEF url('../img/typewriter.jpg') no-repeat center;
+    background-size: cover;
+    border-bottom: .3em solid #FF383F;
 }
-.modal-button{
-    float: right;
+
+.mainHeader h1 {
+    text-shadow: 0 2px 2px rgba(1, 1, 1, .3);
 }
+
+.mainHeader h2 {
+    font-size: 1.3em;
+    text-shadow: 0 1px 1px rgba(1, 1, 1, .2);
+}
+
+.title {
+    margin: 1.2em;
+}
+
+.title h3 {
+    font-size: 1.4em;
+}
+
+.cardBackground {
+    background-color: #CAEBF2;
+    border-radius: .6em;
+    padding: .5em;
+}
+
+.mainFooter {
+  font-size: .75em;
+  padding-top: 50px;
+  height: 80px;
+  border-bottom: solid .3em #FF383F;
+}
+
+
+
+
+
+
+/* Media Queries */
+
+@media only screen and (min-width: 768px),
+       only screen and (min-width: 700px) and (orientation: landscape) {
+
+    #mainHeader h2 {
+        font-size: 1.6em;
+   }
+
+}
+
+@media only screen and (min-width: 1140px) {
+
+
+
+}
+
+
+/* Color Schemes */
+
+/*SKY
+#CAEBF2
+
+CARBON
+#A9A9A9
+
+WATERMELON
+#FF383F
+
+NEUTRAL
+#EFEFEF*/
