@@ -123,10 +123,10 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        function update($new_name, $new_type, $new_address_one, $new_address_two, $new_city, $new_state, $new_zip, $new_country)
-        {
-
-        }
+        // function update($new_name, $new_type, $new_address_one, $new_address_two, $new_city, $new_state, $new_zip, $new_country)
+        // {
+        //
+        // }
 
         function delete()
         {
@@ -179,11 +179,6 @@
                 $found_vendor = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
                 return $found_vendor;
             }
-        }
-
-        static function deleteAll()
-        {
-            $GLOBALS['DB']->exec("DELETE FROM vendors;");
         }
 
 
