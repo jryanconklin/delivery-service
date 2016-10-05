@@ -181,6 +181,11 @@
             }
         }
 
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM vendors;");
+        }
+
 
 //End Class
     }
