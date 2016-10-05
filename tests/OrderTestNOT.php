@@ -227,8 +227,8 @@
             $instructions = "this better work";
             $details = "This is a Killer Burger Order.";
             $status = 0;
-            $service_id = 1;
-            $vendor_id = 0;
+            $service_id = 0;
+            $vendor_id = 1;
             $test_order = new Order ($client_id, $rider_id, $address_id, $instructions, $details, $status, $service_id, $vendor_id);
             $test_order->save();
 
