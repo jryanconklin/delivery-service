@@ -137,9 +137,9 @@
             $GLOBALS['DB']->exec("DELETE FROM orders WHERE id = {$this->getId()};");
         }
 
-        function getAssignRider()
+        function assignRider()
         {
-            $assignedRider = null;
+            $assigned_rider = null;
             $service_id = $this->getServiceId();
             $vendor_id = $this->getVendorId();
             if(($service_id) != 0) {
@@ -148,25 +148,38 @@
                 foreach ($available_riders as $rider1) {
                     foreach ($eligible_riders as $rider2) {
                         if($rider1 == $rider2){
-                            $assignedRider = $rider1;
+                            $assigned_rider = $rider1;
                         }
                     }
                 }
             } elseif (($vendor_id) != 0) {
                 $available_riders = Rider::checkAvailability();
-                $assignedRider = $available_riders[0];
+                $assigned_rider = $available_riders[0];
             }
-            $this->setRiderId($assignedRider->getId());
+            $name = $assigned_rider->getName();
+            $phone = $assigned_rider->getPhone();
+            $location = $assigned_rider->getLocation();
+            $available = 0;
+            $assigned_rider->update($name, $phone, $location, $available);
+            $this->updateRider($assigned_rider->getId());
         }
 
-        function updateStatus()
+        function updateRider($new_rider_id)
         {
-
+            $GLOBALS['DB']->exec("UPDATE orders SET rider_id = {$new_rider_id} WHERE id = {$this->getId()};");
+            $this->setRiderId($new_rider_id);
         }
 
-        function updateDetails()
+        function updateStatus($new_status)
         {
+            $GLOBALS['DB']->exec("UPDATE orders SET status = {$new_status} WHERE id = {$this->getId()};");
+            $this->setStatus($new_status);
+        }
 
+        function updateDetails($new_details)
+        {
+            $GLOBALS['DB']->exec("UPDATE orders SET details = {$new_details} WHERE id = {$this->getId()};");
+            $this->setDetails($new_details);
         }
 //Static Methods
         static function getAll()
