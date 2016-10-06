@@ -7,6 +7,7 @@
     require_once __DIR__."/../src/Service.php";
     require_once __DIR__."/../src/Vendor.php";
     require_once __DIR__."/../src/Client.php";
+    require_once __DIR__."/../src/Order.php";
 
 //Setup
     $app = new Silex\Application();
@@ -49,7 +50,7 @@
       $client = Client::find($client_id);
       $vendor = Vendor::findByName($vendor_name);
       $vendor_id = $vendor->getId();
-      $address_id = $_POST['address_id'];
+      $address_id = $client->getAddressId();
       $details = $_POST['order_details'];
       $instructions = $_POST['order_instructions'];
       $address = Address::findById($address_id);
@@ -62,6 +63,25 @@
       $new_rider = Rider::find($rider_id);
       $new_order->save();
       return $app['twig']->render("order_vendor_confirm.html.twig", array('order' => $new_order, 'client' => $client, 'vendor' => $vendor, 'address' => $address, 'rider' => $new_rider));
+    });
+
+    $app->post("/new_order2/{service_name}/{client_id}", function($service_name, $client_id) use ($app){
+      $client = Client::find($client_id);
+      $service = Service::findByName($service_name);
+      $service_id = $service->getId();
+      $address_id = $client->getAddressId();
+      $details = $_POST['order_details'];
+      $instructions = $_POST['order_instructions'];
+      $address = Address::findById($address_id);
+      $rider_id = 0;
+      $vendor_id = 0;
+      $status = 0;
+      $new_order = new Order($client_id, $rider_id, $address_id, $instructions, $details, $status, $service_id, $vendor_id);
+      $new_order->assignRider();
+      $rider_id = $new_order->getRiderId();
+      $new_rider = Rider::find($rider_id);
+      $new_order->save();
+      return $app['twig']->render("order_service_confirm.html.twig", array('order' => $new_order, 'client' => $client, 'service' => $service, 'address' => $address, 'rider' => $new_rider));
     });
 
 
