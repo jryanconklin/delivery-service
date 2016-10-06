@@ -50,8 +50,10 @@
       $status = 0;
       $new_order = new Order($client_id, $rider_id, $address_id, $instructions, $details, $status, $service_id, $vendor_id);
       $new_order->assignRider();
+      $rider_id = $new_order->getRiderId();
+      $new_rider = Rider::find($rider_id);
       $new_order->save();
-      return $app['twig']->render("order_vendor_confirm.html.twig", array('order' => $new_order, 'client' => $client, 'vendor' => $vendor, 'address' => $address));
+      return $app['twig']->render("order_vendor_confirm.html.twig", array('order' => $new_order, 'client' => $client, 'vendor' => $vendor, 'address' => $address, 'rider' => $new_rider));
     });
 
 
