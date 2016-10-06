@@ -156,3 +156,21 @@ to our communities.', '503-288-3838', 'https://www.newseasonsmarket.com/our-stor
 -- Starbucks SW Broadway
 INSERT INTO vendors (name, description, phone, url, photo, type_id, address_id)
 VALUES ('Starbucks', 'Starbucks makes coffee and then sells it to you. Good for drinking and the having of caffeine.', '503-223-2488', 'https://www.starbucks.com/', '/../img/starbucks.jpg', 5, 7);
+
+--Add Client Address to Addresses Table
+-- ID 8 - John Peoples
+INSERT INTO addresses (address_type, address_one, address_two, city, state, zip, country)
+VALUES ('Residential', '2166 N Place Ave', 'C/O John Peoples', 'Portland', 'OR', 97217, 'United States of America');
+
+-- ID 9 - Marian Person
+INSERT INTO addresses (address_type, address_one, address_two, city, state, zip, country)
+VALUES ('Residential', '5128 N Real Ave', 'C/O Marian Peoples', 'Portland', 'OR', 97217, 'United States of America');
+
+--Populate Client Table
+--John Peoples
+INSERT INTO clients (name, phone, email, password, address_id)
+VALUES ('John Peoples', '503-123-4567', 'john@person.com', '1!2@3#4$4$5%6^', 8);
+
+--Marian Person
+INSERT INTO clients (name, phone, email, password, address_id)
+VALUES ('Marian Person', '503-123-4567', 'marian@person.com', '1!2@3#4$4$5%6^', 9);
