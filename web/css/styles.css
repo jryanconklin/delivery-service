@@ -16,7 +16,7 @@
 .wrapper {
   min-height: calc(100vh - 350px);
   text-align: center;
-  max-width: 97%;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -64,6 +64,9 @@
   border-bottom: solid .3em #FF383F;
 }
 
+.card {
+  min-height: 625px;
+}
 
 /* Media Queries */
 
