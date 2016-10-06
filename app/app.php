@@ -35,7 +35,22 @@
         return $app['twig']->render("order_vendor_client.html.twig", array('client' => $client, 'vendor' => $vendor, 'address' => $address ));
     });
 
-    $app->post("/new_order")
+    $app->post("/new_order/{vendor_name}/{client_id}", function($vendor_name, $client_id) use ($app){
+      $client = Client::find($client_id);
+      $vendor = Vendor::findByName($vendor_name);
+      $vendor_id = $vendor->getId();
+      $address_id = $_POST['address_id'];
+      $details = $_POST['order_details'];
+      $instructions = $_POST['order_instructions'];
+      $address = Address::findById($address_id);
+      $rider_id = 0;
+      $service_id = 0;
+      $status = 0;
+      $new_order = new Order($client_id, $rider_id, $address_id, $instructions, $details, $status, $service_id, $vendor_id);
+      $new_order->assignRider();
+      $new_order->save();
+      return $app['twig']->render("order_vendor_confirm.html.twig", array());
+    });
 
 
 //End App
