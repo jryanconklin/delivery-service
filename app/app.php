@@ -19,7 +19,15 @@
 
 //Home Path
     $app->get("/", function() use ($app) {
+
         return $app['twig']->render('index.html.twig');
+    });
+
+    $app->get("/order/{vendor_name}/{client_id}" function($vendor_name, $client_id) use ($app){
+
+        $client = Client::find($client_id);
+        $vendor = Vendor::findByName($vendor_name);
+        return $app['twig']->render("XXX.html.twig", array('client' => $client, 'vendor' => $vendor ))
     });
 
 

@@ -181,6 +181,24 @@
             }
         }
 
+        static function findByName($search_name)
+        {
+            $vendors = $GLOBALS['DB']->query("SELECT * FROM vendors WHERE name = '{$search_name}';");
+            foreach ($vendors as $vendor) {
+                $id = $vendor['id'];
+                $name = $vendor['name'];
+                $description = $vendor['description'];
+                $phone = $vendor['phone'];
+                $url = $vendor['url'];
+                $photo = $vendor['photo'];
+                $type_id = $vendor['type_id'];
+                $address_id = $vendor['address_id'];
+
+                $found_vendor = new Vendor($name, $description, $phone, $url, $photo, $type_id, $address_id, $id);
+                return $found_vendor;
+            }
+        }
+
 
 //End Class
     }
