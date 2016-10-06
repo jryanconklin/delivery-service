@@ -23,7 +23,7 @@
         $vendors = Vendor::getAll();
         $id = 1;
         $client = Client::find($id);
-        return $app['twig']->render('index.html.twig', array ('vendors' => $vendors, 'client' => $client));
+        return $app['twig']->render('index.html.twig', array ('vendors' => $vendors, 'client' => $client, 'services' => Service::getAll()));
     });
 
     $app->get("/order/{vendor_name}/{client_id}", function($vendor_name, $client_id) use ($app){
@@ -32,7 +32,7 @@
         $vendor = Vendor::findByName($vendor_name);
         $address_id = $client->getAddressId();
         $address = Address::findById($address_id);
-        return $app['twig']->render("order_vendor_client.html.twig", array('client' => $client, 'vendor' => $vendor, 'address' => $address ));
+        return $app['twig']->render("order_vendor_client.html.twig", array('client' => $client, 'vendor' => $vendor, 'address' => $address));
     });
 
 
