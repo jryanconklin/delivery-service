@@ -6,6 +6,13 @@
 
       </div>
       <div class="col-xs-8">
+        <h4>Delivery Address:</h4> <p>{{client.getName}}<br>{{address.getAddressOne}}<br>{{address.getCity}}, {{address.getState}} {{address.getZip}}<br>{{address.getCountry}}<br></p>
+
+        <form action="/edit_address/{{client.getId}}" method="post">
+          <button class="btn btn-sm btn-warning" type="submit"  name="button">Change address</button>
+        </form>
+        <hr>
+
         <form action="new_order" method="post">
           <div class="form-group">
             <label for="order_details">Enter Order details:</label>
@@ -16,9 +23,7 @@
             <label for="order_instructions">Enter Order instructions:</label>
             <textarea class="form-control" name="order_instructions" id="order_instructions" rows="6"></textarea>
           </div>
-          <h4>Delivery Address:</h4> <p>{{client.getName}}<br>{{address.getAddressOne}}<br>{{address.getCity}}, {{address.getState}} {{address.getZip}}<br>{{address.getCountry}}<br></p>
-          <button class="btn btn-sm btn-warning" type="submit" formaction="edit_address"name="button">Change address</button>
-          <br>
+
           <br>
           <button type="button" class="btn btn-lg btn-primary"  name="button">Place my order!</button>
         </form>

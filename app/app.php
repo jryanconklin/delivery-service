@@ -35,7 +35,14 @@
         return $app['twig']->render("order_vendor_client.html.twig", array('client' => $client, 'vendor' => $vendor, 'address' => $address ));
     });
 
-    $app->post("/new_order")
+    // $app->post("/new_order")
+
+    $app->post("/edit_address/{id}", function ($id) use ($app){
+        $client = Client::find($id);
+        $address_id = $client->getAddressId();
+        $address = Address::findById($address_id);
+        return $app['twig']->render("edit_client_address.html.twig", array('client' => $client, 'address' => $address ));
+    });
 
 
 //End App

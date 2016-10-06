@@ -1,0 +1,44 @@
+{% include 'header.html.twig' %}
+  <div class="wrapper">
+    <h2>Place a {{client.getName}} Order!</h2>
+    <div class="row">
+      <div class="col-xs-2">
+
+      </div>
+      <div class="col-xs-8">
+        <form action="new_order" method="post">
+          <div class="form-group">
+            <label for="address">Your Address Info</label>
+            <h4>Current Address:</h4> <p>{{client.getName}}<br>{{address.getAddressOne}}<br>{{address.getCity}}, {{address.getState}} {{address.getZip}}<br>{{address.getCountry}}<br></p>
+
+            <form class="" action="XXXXX.html" method="post">
+              <label for="name">Name</label>
+                <input type="text" name="name">
+                <br>
+                <label for="address">Address 1</label>
+                <input type="text" name="address_one">
+                <br>
+                <label for="address">Address 2</label>
+                <input type="text" name="address_two">
+                <br>
+                <label for="city">City</label>
+                <label for="city"></label>
+                <input type="text" name="city">
+                <br>
+                <label for="state">State</label>
+                <input type="text" name="state">
+                <br>
+                <label for="zip">Zip</label>
+                <input type="text" name="zip">
+                <br>
+                <button type="submit" name="button">Update</button>
+            </form>
+      </div>
+      <div class="col-xs-2">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'footer.html.twig' %}
