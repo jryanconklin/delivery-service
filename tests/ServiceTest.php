@@ -147,6 +147,30 @@
             $this->assertEquals($test_service, $result);
         }
 
+        function test_serviceFindByName()
+        {
+            //Arrange
+            $name = "Moving help";
+            $description = "test test";
+            $photo = "service.com";
+            $type_id = 1;
+            $test_service = new Service($name, $description, $type_id, $photo);
+            $test_service->save();
+
+            $name2 = "Math Tutoring";
+            $description2 = "test test";
+            $photo2 = "service.com";
+            $type_id2 = 2;
+            $test_service2 = new Service($name2, $description2, $type_id2, $photo);
+            $test_service2->save();
+
+            //Act
+            $result = Service::findByName($name);
+
+            //Assert
+            $this->assertEquals($test_service, $result);
+        }
+
         function test_addRider()
         {
             //Arrange
