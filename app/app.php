@@ -35,6 +35,8 @@
         return $app['twig']->render("order_vendor_client.html.twig", array('client' => $client, 'vendor' => $vendor, 'address' => $address ));
     });
 
+    $app->post("/new_order")
+
 
 //End App
     return $app;

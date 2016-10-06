@@ -151,7 +151,7 @@ INSERT INTO vendors (name, description, phone, url, photo, type_id, address_id)
 VALUES ('New Seasons', 'New Seasons Market brings
 delicious, healthy food from local
 farmers, producers, ranchers & fishermen
-to our communities.', '503-288-3838', 'https://www.newseasonsmarket.com/our-stores/concordia/', '/../img/newseasons-concordia', 5, 6);
+to our communities.', '503-288-3838', 'https://www.newseasonsmarket.com/our-stores/concordia/', '/../img/newseasons-concordia.jpg', 5, 6);
 
 -- Starbucks SW Broadway
 INSERT INTO vendors (name, description, phone, url, photo, type_id, address_id)
