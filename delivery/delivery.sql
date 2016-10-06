@@ -58,7 +58,7 @@ CREATE TABLE services (
     id serial PRIMARY KEY,
     name VARCHAR(70),
     description VARCHAR(255),
-    url VARCHAR(255),
+    photo VARCHAR(255),
     type_id int
 );
 
@@ -92,7 +92,24 @@ VALUES ('Grocery Store');
 -- ID 6
 INSERT INTO types (name)
 VALUES ('Coffee Shop');
-
+-- ID 7
+INSERT INTO types (name)
+VALUES ('Massage');
+-- ID 8
+INSERT INTO types (name)
+VALUES ('Moving');
+-- ID 9
+INSERT INTO types (name)
+VALUES ('Tutor/Math');
+-- ID 10
+INSERT INTO types (name)
+VALUES ('Tutor/English');
+-- ID 11
+INSERT INTO types (name)
+VALUES ('Tax Prep');
+-- ID 12
+INSERT INTO types (name)
+VALUES ('Social Media');
 
 -- Populate Data for Addresses
 -- ID 1 Guardian Games
@@ -122,6 +139,14 @@ VALUES ('Business', '5320 NE 33rd Ave', 'Concordia', 'Portland', 'OR', 97211, 'U
 -- ID 7 Starbucks SW Broadway
 INSERT INTO addresses (address_type, address_one, address_two, city, state, zip, country)
 VALUES ('Business', '720 SW Broadway', 'SW Broadway', 'Portland', 'OR', 97205, 'United States of America');
+
+-- ID 8 - John Peoples
+INSERT INTO addresses (address_type, address_one, address_two, city, state, zip, country)
+VALUES ('Residential', '2166 N Place Ave', 'C/O John Peoples', 'Portland', 'OR', 97217, 'United States of America');
+
+-- ID 9 - Marian Person
+INSERT INTO addresses (address_type, address_one, address_two, city, state, zip, country)
+VALUES ('Residential', '5128 N Real Ave', 'C/O Marian Peoples', 'Portland', 'OR', 97217, 'United States of America');
 
 -- Populate Data for Vendors
 -- Guardian Games
@@ -157,15 +182,6 @@ to our communities.', '503-288-3838', 'https://www.newseasonsmarket.com/our-stor
 INSERT INTO vendors (name, description, phone, url, photo, type_id, address_id)
 VALUES ('Starbucks', 'Starbucks makes coffee and then sells it to you. Good for drinking and the having of caffeine.', '503-223-2488', 'https://www.starbucks.com/', '/../img/starbucks.jpg', 5, 7);
 
---Add Client Address to Addresses Table
--- ID 8 - John Peoples
-INSERT INTO addresses (address_type, address_one, address_two, city, state, zip, country)
-VALUES ('Residential', '2166 N Place Ave', 'C/O John Peoples', 'Portland', 'OR', 97217, 'United States of America');
-
--- ID 9 - Marian Person
-INSERT INTO addresses (address_type, address_one, address_two, city, state, zip, country)
-VALUES ('Residential', '5128 N Real Ave', 'C/O Marian Peoples', 'Portland', 'OR', 97217, 'United States of America');
-
 --Populate Client Table
 --John Peoples
 INSERT INTO clients (name, phone, email, password, address_id)
@@ -174,3 +190,32 @@ VALUES ('John Peoples', '503-123-4567', 'john@person.com', '1!2@3#4$4$5%6^', 8);
 --Marian Person
 INSERT INTO clients (name, phone, email, password, address_id)
 VALUES ('Marian Person', '503-123-4567', 'marian@person.com', '1!2@3#4$4$5%6^', 9);
+
+-- Populate Service Types Table
+INSERT INTO services (name, description, photo, type_id)
+VALUES ('Full Body Massage', 'Interested in a full body massage? Let one of our talented riders help you out!', '/../img/massage.jpg', 7);
+
+INSERT INTO services (name, description, photo, type_id)
+VALUES ('Movers', 'Need big strong people? We have riders that can help out with your moving!', '/../img/movers.jpg', 8);
+
+INSERT INTO services (name, description, photo, type_id)
+VALUES ('Math Tutors', 'Pythago-what? Get a math tutor here!', '/../img/math.jpg', 9);
+
+INSERT INTO services (name, description, photo, type_id)
+VALUES ('English Tutors', 'To have our rider help, or not have our rider help. That is the question!', '/../img/english.jpg', 10);
+
+INSERT INTO services (name, description, photo, type_id)
+VALUES ('Tax Prep', 'Need help filing your taxes? We have a super awesome rider that can help!', '/../img/accounting.jpg', 11);
+
+INSERT INTO services (name, description, photo, type_id)
+VALUES ('Get Social', 'We have riders that are experts in the field of Social Media management. Let us send one your way!', '/../img/social.jpg', 12);
+
+-- Populate Riders
+INSERT INTO riders (name, phone, location, available)
+VALUES ('Johnny Blaze', '123-456-7890', 'North Portland', 1);
+
+INSERT INTO riders (name, phone, location, available)
+VALUES ('Robbie Reyes', '428-456-7890', 'SE Portland', 1);
+
+INSERT INTO riders (name, phone, location, available)
+VALUES ('Danny Ketch', '987-456-7890', 'NW Portland', 1);

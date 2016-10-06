@@ -7,6 +7,7 @@
     require_once __DIR__."/../src/Service.php";
     require_once __DIR__."/../src/Vendor.php";
     require_once __DIR__."/../src/Client.php";
+    require_once __DIR__."/../src/Order.php";
 
 //Setup
     $app = new Silex\Application();
@@ -40,7 +41,7 @@
       $client = Client::find($client_id);
       $vendor = Vendor::findByName($vendor_name);
       $vendor_id = $vendor->getId();
-      $address_id = $_POST['address_id'];
+      $address_id = $client->getAddressId();
       $details = $_POST['order_details'];
       $instructions = $_POST['order_instructions'];
       $address = Address::findById($address_id);
@@ -50,7 +51,7 @@
       $new_order = new Order($client_id, $rider_id, $address_id, $instructions, $details, $status, $service_id, $vendor_id);
       $new_order->assignRider();
       $new_order->save();
-      return $app['twig']->render("order_vendor_confirm.html.twig", array());
+      return $app['twig']->render("order_vendor_confirm.html.twig", array('order' => $new_order, 'client' => $client, 'vendor' => $vendor, 'address' => $address));
     });
 
 

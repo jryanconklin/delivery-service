@@ -1,30 +1,21 @@
 {% include 'header.html.twig' %}
   <div class="wrapper">
-    <h2>Place a {{vendor.getName}} Order!</h2>
+    <h2>You placed a {{vendor.getName}} Order!</h2>
     <div class="row">
       <div class="col-xs-2">
 
       </div>
       <div class="col-xs-8">
-        <form action="new_order" method="post">
-          <div class="form-group">
-            <label for="order_details">Enter Order details:</label>
-            <textarea class="form-control" name="order_details" id="order_details" rows="10"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="order_instructions">Enter Order instructions:</label>
-            <textarea class="form-control" name="order_instructions" id="order_instructions" rows="6"></textarea>
-          </div>
-          <input type="hidden" name="address_id" value="{{address.getId}}">
+          <h4>Order Info</h4>
+          <p>
+            {{order.getDetails}}<br>{{order.getInstructions}}
+          </p>
           <h4>Delivery Address:</h4> <p>{{client.getName}}<br>{{address.getAddressOne}}<br>{{address.getCity}}, {{address.getState}} {{address.getZip}}<br>{{address.getCountry}}<br></p>
-          <button class="btn btn-sm btn-warning" type="submit" formaction="edit_address"name="button">Change address</button>
-          <br>
-          <br>
-          <button type="button" class="btn btn-lg btn-primary"  name="button">Place my order!</button>
-        </form>
 
-      </div>
+          <br>
+          <br>
+
+        </div>
       <div class="col-xs-2">
 
       </div>
