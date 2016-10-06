@@ -35,6 +35,7 @@
         return $app['twig']->render("order_vendor_client.html.twig", array('client' => $client, 'vendor' => $vendor, 'address' => $address ));
     });
 
+<<<<<<< HEAD
     $app->post("/new_order/{vendor_name}/{client_id}", function($vendor_name, $client_id) use ($app){
       $client = Client::find($client_id);
       $vendor = Vendor::findByName($vendor_name);
@@ -50,6 +51,31 @@
       $new_order->assignRider();
       $new_order->save();
       return $app['twig']->render("order_vendor_confirm.html.twig", array());
+=======
+
+
+    $app->post("/edit_address/{vendor_name}/{client_id}", function ($vendor_name, $client_id) use ($app){
+        $client = Client::find($client_id);
+        $address_id = $client->getAddressId();
+        $address = Address::findById($address_id);
+        $vendor = Vendor::findByName($vendor_name);
+        return $app['twig']->render("edit_client_address.html.twig", array('client' => $client, 'address' => $address, 'vendor' => $vendor));
+    });
+
+    $app->post("/address_update/order/{vendor_name}/{client_id}", function ($vendor_name, $client_id) use ($app) {
+        $type = $_POST['type'];
+        $address_one = $_POST['address_one'];
+        $address_two = $_POST['address_two'];
+        $city = $_POST['city'];
+        $state = $_POST['state'];
+        $zip = $_POST['zip'];
+        $country = $_POST['country'];
+        $client = Client::find(1);
+        $new_address = new Address($type, $address_one, $address_two, $city, $state, $zip, $country);
+        $new_address->save();
+        $vendor = Vendor::findByName($vendor_name);
+        return $app['twig']->render("order_vendor_client.html.twig", array('client' => $client, 'vendor' => $vendor, 'address' => $new_address ));
+>>>>>>> master
     });
 
 

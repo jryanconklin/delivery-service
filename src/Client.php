@@ -64,6 +64,10 @@
             return $this->phone;
         }
 
+        function setAddressId($new_address_id)
+        {
+            $this->address_id = $new_address_id;
+        }
 
         function getAddressId()
         {
@@ -139,6 +143,12 @@
         {
             $GLOBALS['DB']->exec("UPDATE clients phone = {$new_phone} WHERE id = {$this->getId()};");
             $this->setPhone($new_phone);
+        }
+
+        function updateAddressId($new_address_id)
+        {
+            $GLOBALS['DB']->exec("UPDATE clients address_id = {$new_address_id} WHERE id = {$this->getId()};");
+            $this->setAddress($new_address_id);
         }
 //End Class
     }
