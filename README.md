@@ -42,8 +42,7 @@ __Input__:
 
 __Output__:
 
-## Author/s
-Tim Bourgault
+## Authors
 J. Ryan Conklin
 Katy Henning
 Seth Kendall
