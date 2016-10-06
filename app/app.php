@@ -51,7 +51,7 @@
       $new_order->assignRider();
       $new_order->save();
       return $app['twig']->render("order_vendor_confirm.html.twig", array());
-
+    });
 
 
     $app->post("/edit_address/{vendor_name}/{client_id}", function ($vendor_name, $client_id) use ($app){
