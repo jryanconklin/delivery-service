@@ -8,12 +8,12 @@
       <div class="col-xs-8">
         <h4>Delivery Address:</h4> <p>{{client.getName}}<br>{{address.getAddressOne}}<br>{{address.getCity}}, {{address.getState}} {{address.getZip}}<br>{{address.getCountry}}<br></p>
 
-        <form action="/edit_address/{{client.getId}}" method="post">
+        <form action="/edit_address/{{vendor.getName}}/{{client.getId}}" method="post">
           <button class="btn btn-sm btn-warning" type="submit"  name="button">Change address</button>
         </form>
         <hr>
 
-        <form action="new_order" method="post">
+        <form action="/new_order" method="post">
           <div class="form-group">
             <label for="order_details">Enter Order details:</label>
             <textarea class="form-control" name="order_details" id="order_details" rows="10"></textarea>

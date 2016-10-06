@@ -1,20 +1,17 @@
 {% include 'header.html.twig' %}
   <div class="wrapper">
-    <h2>Place a {{client.getName}} Order!</h2>
+    <h2>{{client.getName}} Update your information:</h2>
     <div class="row">
       <div class="col-xs-2">
 
       </div>
       <div class="col-xs-8">
-        <form action="new_order" method="post">
-          <div class="form-group">
-            <label for="address">Your Address Info</label>
+        <div class="form-group">
+            <hr>
             <h4>Current Address:</h4> <p>{{client.getName}}<br>{{address.getAddressOne}}<br>{{address.getCity}}, {{address.getState}} {{address.getZip}}<br>{{address.getCountry}}<br></p>
 
-            <form class="" action="XXXXX.html" method="post">
-              <label for="name">Name</label>
-                <input type="text" name="name">
-                <br>
+            <form action="/address_update/order/{{vendor.getName}}/{{client.getId}}" method="post">
+              <!-- <input name="_method" type="hidden" value="patch"> -->
                 <label for="address">Address 1</label>
                 <input type="text" name="address_one">
                 <br>
@@ -31,6 +28,12 @@
                 <label for="zip">Zip</label>
                 <input type="text" name="zip">
                 <br>
+                <label for="type">Type</label>
+                <input type="text" name="type">
+                <br>
+                <label for="country">Country</label>
+                <input type="text" name="country">
+                <hr>
                 <button type="submit" name="button">Update</button>
             </form>
       </div>
