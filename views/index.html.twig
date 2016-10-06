@@ -1,32 +1,55 @@
 {% include 'header.html.twig' %}
     <div class="wrapper">
-        <div class="title">
-            <h3>Order Zenything</h3>
-        </div>
-        <div class="row cardBackground">
-
-<!-- INSERT REAL WITH TWIG  -->
-{% if vendors is not empty %}
-  {% for vendor in vendors %}
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-block">
-                        <h4 id="cardOverride" class="card-title"> {{vendor.getName}} </h4>
-                        <h6 class="card-subtitle text-muted"> {{vendor.getTypeId}} </h6>
+      <div class="title">
+          <h3>Order Zenything</h3>
+      </div>
+      <div class="row cardBackground">
+        <!-- INSERT REAL WITH TWIG  -->
+        <h2>Vendors</h2>
+        {% if vendors is not empty %}
+          {% for vendor in vendors %}
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <h4 id="cardOverride" class="card-title"> {{vendor.getName}} </h4>
+                                <h6 class="card-subtitle text-muted"> {{vendor.getTypeId}} </h6>
+                            </div>
+                            <img class="img img-fluid" src="{{vendor.getPhoto}}" alt="Card image">
+                            <div class="card-block">
+                                <p class="card-text">{{vendor.getDescription}}</p>
+                                <a href="{{vendor.getUrl}}" class="card-link"> {{vendor.getName}} Website</a>
+                                <form action="/order/{{vendor.getName}}/{{client.getId}}" method="get">
+                                  <button type="submit" class="btn btn-sm btn-primary">Order</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <img class="img img-fluid" src="{{vendor.getPhoto}}" alt="Card image">
-                    <div class="card-block">
-                        <p class="card-text">{{vendor.getDescription}}</p>
-                        <a href="{{vendor.getUrl}}" class="card-link"> {{vendor.getName}} Website</a>
-                        <br>
-                        <a href="/order/{{vendor.getName}}/{{client.getId}}" class="card-link"> Order </a>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="row cardBackground">
+        <h2>Services</h2>
+        {% if services is not empty %}
+          {% for service in services %}
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <h4 id="cardOverride" class="card-title"> {{service.getName}} </h4>
+                                <h6 class="card-subtitle text-muted"> {{service.getTypeId}} </h6>
+                            </div>
+                            <img class="img img-fluid" src="{{service.getPhoto}}" alt="Card image">
+                            <div class="card-block">
+                                <p class="card-text">{{service.getDescription}}</p>
+                                <form action="/order/{{service.getName}}/{{client.getId}}" method="get">
+                                  <button type="submit" class="btn btn-sm btn-primary">Order</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-  {% endfor %}
-{% endif %}
-<!-- End Cards -->
-        </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+  <!-- End Cards -->
     </div>
 
 {% include 'footer.html.twig' %}

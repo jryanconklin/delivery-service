@@ -5,15 +5,15 @@
         private $name;
         private $description;
         private $type_id;
-        private $url;
+        private $photo;
         private $id;
 
-        function __construct($name, $description, $type_id, $url, $id=null)
+        function __construct($name, $description, $type_id, $photo, $id=null)
         {
             $this->name = $name;
             $this->description = $description;
             $this->type_id = $type_id;
-            $this->url = $url;
+            $this->photo = $photo;
             $this->id = $id;
         }
 //Getter and Setter Methods
@@ -44,13 +44,13 @@
             return $this->type_id;
         }
 
-        function setUrl($new_url)
+        function setPhoto($new_photo)
         {
-            $this->url = $new_url;
+            $this->photo = $new_photo;
         }
-        function getUrl()
+        function getPhoto()
         {
-            return $this->url;
+            return $this->photo;
         }
 
         function setId($new_id)
@@ -65,9 +65,9 @@
         function save()
         {
           $GLOBALS['DB']->exec(
-          "INSERT INTO services (name, description, url, type_id)
+          "INSERT INTO services (name, description, photo, type_id)
 
-          VALUES ('{$this->getName()}', '{$this->getDescription()}', '{$this->getUrl()}', {$this->getTypeId()});");
+          VALUES ('{$this->getName()}', '{$this->getDescription()}', '{$this->getPhoto()}', {$this->getTypeId()});");
 
           $this->id = $GLOBALS['DB']->lastInsertId();
         }
@@ -104,10 +104,10 @@
             foreach($returned_services as $service) {
                 $name = $service['name'];
                 $description = $service['description'];
-                $url = $service['url'];
+                $photo = $service['photo'];
                 $type_id = $service['type_id'];
                 $id = $service['id'];
-                $new_service = new Service($name, $description, $type_id, $url, $id);
+                $new_service = new Service($name, $description, $type_id, $photo, $id);
                 array_push($services, $new_service);
             }
             return $services;
@@ -124,6 +124,19 @@
             foreach($services as $service){
                 $service_id = $service->getId();
                 if($service_id == $search_id) {
+                  $found_service = $service;
+                }
+            }
+            return $found_service;
+        }
+
+        static function findByName($search_name)
+        {
+            $found_service = null;
+            $services = Service::getAll();
+            foreach($services as $service){
+                $service_name = $service->getName();
+                if($service_name == $search_name) {
                   $found_service = $service;
                 }
             }
