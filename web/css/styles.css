@@ -57,6 +57,10 @@
     padding: .5em;
 }
 
+.labelInput {
+    font-size: .9em;
+}
+
 .mainFooter {
   font-size: .75em;
   padding-top: 50px;
@@ -79,8 +83,16 @@
 
 }
 
-@media only screen and (min-width: 1140px) {
+@media only screen and (min-width: 991px),
+       only screen and (min-width: 1400px) and (orientation: landscape) {
 
+    #cardOverride {
+        font-size: 1.2em;
+    }
+
+    .labelInput {
+        font-size: 1em;
+    }
 
 
 }
