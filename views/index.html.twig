@@ -3,8 +3,7 @@
 
       <!-- Vendor Cards  -->
       <div class="row vendor">
-        <h2>Vendors</h2>
-        <hr>
+        <h2 class="background">Vendors</h2>
           {% if vendors is not empty %}
             {% for vendor in vendors %}
               <div class="col-lg-4">
@@ -17,7 +16,7 @@
                   <div class="card-block">
                       <p class="card-text">{{vendor.getDescription}}</p>
                       <a href="{{vendor.getUrl}}" class="card-link"> {{vendor.getName}} Website</a>
-                      <form action="/order/{{vendor.getName}}/{{client.getId}}" method="get">
+                      <form action="/order/{{vendor.getName}}/{{client.getId}}" method="get" class="buttonCard">
                         <button type="submit" class="btn btn-sm btn-primary">Order</button>
                       </form>
                   </div>
@@ -29,8 +28,7 @@
         <br>
         <!-- Service Cards -->
         <div class="services row">
-          <h2>Services</h2>
-          <hr>
+          <h2 class="background">Services</h2>
           {% if services is not empty %}
             {% for service in services %}
               <div class="col-lg-4">
@@ -42,7 +40,7 @@
                   <img class="img img-fluid" src="{{service.getPhoto}}" alt="Card image">
                   <div class="card-block">
                     <p class="card-text">{{service.getDescription}}</p>
-                    <form action="/order/{{service.getName}}/{{client.getId}}" method="post">
+                    <form action="/order/{{service.getName}}/{{client.getId}}" method="post" class="buttonCard">
                       <button type="submit" class="btn btn-sm btn-primary">Order</button>
                     </form>
                   </div>

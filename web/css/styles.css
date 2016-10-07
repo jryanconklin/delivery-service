@@ -53,6 +53,19 @@
     font-size: 1.4em;
 }
 
+.background {
+  margin: 0 auto;
+  width: 96%;
+  margin-bottom: .3em;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #CAEBF2;
+  border-bottom: .01em solid #FF383F;
+  border-radius: 10px;
+  padding: .1em;
+  color: #FFF;
+  /*width: 100%;*/
+  text-shadow: 1px 1px 1px rgba(0, 2, 2, .6);
+}
 
 .labelInput {
     font-size: .9em;
@@ -69,6 +82,7 @@
   min-height: 625px;
 }
 
+
 /* Media Queries */
 
 @media only screen and (min-width: 768px),
@@ -77,6 +91,8 @@
     #mainHeader h2 {
         font-size: 1.6em;
    }
+
+
 }
 
 @media only screen and (min-width: 991px),
@@ -89,6 +105,15 @@
     .labelInput {
         font-size: 1em;
     }
+
+    .buttonCard {
+      position: absolute;
+      bottom: 10px;
+      margin: 0 auto;
+      width: 90%
+    }
+
+
 }
 
 
