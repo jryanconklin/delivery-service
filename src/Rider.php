@@ -153,20 +153,7 @@
             }
             return $found_rider;
         }
-        // Return here for service rider selection!!!
-        //-------------------------------------------
-        // static function checkEligibility($search_id)
-        // {
-        //     $all_riders = Rider::getAll();
-        //     $eligible_riders = array();
-        //     foreach ($all_riders as $rider) {
-        //         $returned_services = $GLOBALS['DB']->query("SELECT services.* FROM riders
-        //             JOIN riders_services ON (riders_services.rider_id = riders.id)
-        //             JOIN services ON (services.id = riders_services.service_id)
-        //             WHERE riders.id")
-        //     }
-        // }
-
+        
         static function checkAvailability()
         {
             $returned_riders = Rider::getAll();

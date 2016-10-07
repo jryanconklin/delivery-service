@@ -142,17 +142,7 @@
             $assigned_rider = null;
             $service_id = $this->getServiceId();
             $vendor_id = $this->getVendorId();
-            if(($service_id) == 0) {
-                $available_riders = Rider::checkAvailability();
-                $eligible_riders = Rider::checkEligibility($service_id);
-                foreach ($available_riders as $rider1) {
-                    foreach ($eligible_riders as $rider2) {
-                        if($rider1 == $rider2){
-                            $assigned_rider = $rider1;
-                        }
-                    }
-                }
-            } elseif ((($vendor_id) != 0)||(($service_id) != 0)) {
+            if((($vendor_id) != 0)||(($service_id) != 0)) {
                 $available_riders = Rider::checkAvailability();
                 $assigned_rider = $available_riders[0];
             }

@@ -148,6 +148,15 @@ VALUES ('Residential', '2166 N Place Ave', 'C/O John Peoples', 'Portland', 'OR',
 INSERT INTO addresses (address_type, address_one, address_two, city, state, zip, country)
 VALUES ('Residential', '5128 N Real Ave', 'C/O Marian Peoples', 'Portland', 'OR', 97217, 'United States of America');
 
+-- ID 10 Killer Burger
+INSERT INTO addresses (address_type, address_one, address_two, city, state, zip, country)
+VALUES ('Business', '510 SW 3rd Ave', 'Downtown', 'Portland', 'OR', 97204, 'United States of America');
+
+-- ID 11 Blue Star Donuts
+INSERT INTO addresses (address_type, address_one, address_two, city, state, zip, country)
+VALUES ('Business', '1237 SW Washington St', 'Downtown', 'Portland', 'OR', 97205, 'United States of America');
+
+
 -- Populate Data for Vendors
 -- Guardian Games
 INSERT INTO vendors (name, description, phone, url, photo, type_id, address_id)
@@ -181,6 +190,17 @@ to our communities.', '503-288-3838', 'https://www.newseasonsmarket.com/our-stor
 -- Starbucks SW Broadway
 INSERT INTO vendors (name, description, phone, url, photo, type_id, address_id)
 VALUES ('Starbucks', 'Starbucks makes coffee and then sells it to you. Good for drinking and the having of caffeine.', '503-223-2488', 'https://www.starbucks.com/', '/../img/starbucks.jpg', 5, 7);
+
+-- Killer Burger
+INSERT INTO vendors (name, description, phone, url, photo, type_id, address_id)
+VALUES ('Killer Burger', 'Every Killer Burger is 1/3 Pound 100% Beef and includes: BACON!
+French Fries included with every Killer Burger', '503-946-8946', 'https://killerburger.com/', '/../img/killerburger.jpg', 3, 10);
+
+-- Blue Star Donuts
+INSERT INTO vendors (name, description, phone, url, photo, type_id, address_id)
+VALUES ('Blue Star Donuts', 'Blue Star Donuts is a gourmet donut concept founded in Portland, OR, in 2012. Our donuts are made from a classic brioche recipe that originated in the south of France.', '503-265-8410', 'http://www.bluestardonuts.com/', '/../img/bluestar.jpg', 2, 11);
+
+
 
 --Populate Client Table
 --John Peoples

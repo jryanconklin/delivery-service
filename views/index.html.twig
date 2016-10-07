@@ -4,13 +4,14 @@
       <!-- Vendor Cards  -->
       <div class="row vendor">
         <h2>Vendors</h2>
+        <hr>
           {% if vendors is not empty %}
             {% for vendor in vendors %}
               <div class="col-lg-4">
                 <div class="card">
                   <div class="card-block">
                       <h4 id="cardOverride" class="card-title"> {{vendor.getName}} </h4>
-                      <h6 class="card-subtitle text-muted"> {{vendor.getTypeId}} </h6>
+                      <h6 class="card-subtitle text-muted"> Vendors </h6>
                   </div>
                   <img class="img img-fluid" src="{{vendor.getPhoto}}" alt="Card image">
                   <div class="card-block">
@@ -25,17 +26,18 @@
             {% endfor %}
           {% endif %}
         </div>
-
+        <br>
         <!-- Service Cards -->
         <div class="services row">
           <h2>Services</h2>
+          <hr>
           {% if services is not empty %}
             {% for service in services %}
               <div class="col-lg-4">
                 <div class="card">
                   <div class="card-block">
                     <h4 id="cardOverride" class="card-title"> {{service.getName}} </h4>
-                    <h6 class="card-subtitle text-muted"> {{service.getTypeId}} </h6>
+                    <h6 class="card-subtitle text-muted"> Services </h6>
                   </div>
                   <img class="img img-fluid" src="{{service.getPhoto}}" alt="Card image">
                   <div class="card-block">
