@@ -71,6 +71,11 @@
     font-size: .9em;
 }
 
+.buttonCard {
+  line-height: 2.5em;
+}
+
+
 .mainFooter {
   font-size: .75em;
   padding-top: 50px;
