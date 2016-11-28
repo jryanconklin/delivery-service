@@ -20,28 +20,6 @@ For best results, please:
 - Port the Provided "To Do" Database to Your MySQL Provider
 - Launch Project in Server Mode
 
-## Specifications
-
-*A spec in plain english.*
-
-__Input__:
-
-__Output__:
-
-#### Specification 2 ####
-*Another spec in plain english.*
-
-__Input__:
-
-__Output__:
-
-#### Specification 3 ####
-*Yet another spec in plain english.*
-
-__Input__:
-
-__Output__:
-
 ## Authors
 J. Ryan Conklin
 Katy Henning
